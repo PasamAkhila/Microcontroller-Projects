@@ -1,0 +1,3213 @@
+
+
+Microchip MPLAB XC8 Assembler V3.10 build 20250813170317 
+                                                                                               Fri Nov 13 16:34:03 2026
+
+Microchip MPLAB XC8 C Compiler v3.10 (Free license) build 20250813170317 Og1 
+     1                           	processor	16F877A
+     2                           	pagewidth 120
+     3                           	opt	flic
+     4                           	psect	idataBANK0,global,class=CODE,space=0,delta=2,noexec
+     5                           	psect	cinit,global,class=CODE,space=0,merge=1,delta=2
+     6                           	psect	dataBANK0,global,class=BANK0,space=1,delta=1,noexec
+     7                           	psect	inittext,global,class=CODE,space=0,delta=2
+     8                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1,noexec
+     9                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1,noexec
+    10                           	psect	maintext,global,class=CODE,space=0,split=1,delta=2
+    11                           	psect	text1,local,class=CODE,space=0,merge=1,delta=2
+    12                           	psect	text2,local,class=CODE,space=0,merge=1,delta=2
+    13                           	psect	text3,local,class=CODE,space=0,merge=1,delta=2
+    14                           	psect	text4,local,class=CODE,space=0,merge=1,delta=2
+    15                           	psect	text5,local,class=CODE,space=0,merge=1,delta=2
+    16                           	psect	text6,local,class=CODE,space=0,merge=1,delta=2
+    17                           	psect	text7,local,class=CODE,space=0,merge=1,delta=2
+    18                           	psect	text8,local,class=CODE,space=0,merge=1,delta=2
+    19                           	psect	text9,local,class=CODE,space=0,merge=1,delta=2
+    20                           	psect	text10,local,class=CODE,space=0,merge=1,delta=2
+    21                           	psect	text11,local,class=CODE,space=0,merge=1,delta=2
+    22                           	psect	text12,local,class=CODE,space=0,merge=1,delta=2
+    23                           	psect	text13,local,class=CODE,space=0,merge=1,delta=2
+    24                           	psect	text14,local,class=CODE,space=0,merge=1,delta=2,group=1
+    25                           	psect	text15,local,class=CODE,space=0,merge=1,delta=2
+    26                           	psect	text16,local,class=CODE,space=0,merge=1,delta=2,group=1
+    27                           	psect	text17,local,class=CODE,space=0,merge=1,delta=2,group=1
+    28                           	psect	text18,local,class=CODE,space=0,merge=1,delta=2,group=1
+    29                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+    30                           	dabs	1,0x7E,2
+    31     0000                     
+    32                           ; Generated 22/04/2026 GMT
+    33                           ; 
+    34                           ; Copyright (c) 2026 Microchip Technology Inc. and its subsidiaries.
+    35                           ; 
+    36                           ; Licensed under the Apache License, Version 2.0 (the "License");
+    37                           ; you may not use this file except in compliance with the License.
+    38                           ; You may obtain a copy of the License at
+    39                           ; 
+    40                           ;   http://www.apache.org/licenses/LICENSE-2.0
+    41                           ; 
+    42                           ; Unless required by applicable law or agreed to in writing, software
+    43                           ; distributed under the License is distributed on an "AS IS" BASIS,
+    44                           ; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    45                           ; See the License for the specific language governing permissions and
+    46                           ; limitations under the License.
+    47                           ; 
+    48                           ; 
+    49                           ; Code-generator required, PIC16F877A Definitions
+    50                           ; 
+    51                           ; SFR Addresses
+    52     0004                     fsr             equ	4
+    53     0004                     fsr0            equ	4
+    54     0000                     indf            equ	0
+    55     0000                     indf0           equ	0
+    56     0002                     pc              equ	2
+    57     0002                     pcl             equ	2
+    58     000A                     pclath          equ	10
+    59     0003                     status          equ	3
+    60     0000                     INDF            equ	0	;# 
+    61     0001                     TMR0            equ	1	;# 
+    62     0002                     PCL             equ	2	;# 
+    63     0003                     STATUS          equ	3	;# 
+    64     0004                     FSR             equ	4	;# 
+    65     0005                     PORTA           equ	5	;# 
+    66     0006                     PORTB           equ	6	;# 
+    67     0007                     PORTC           equ	7	;# 
+    68     0008                     PORTD           equ	8	;# 
+    69     0009                     PORTE           equ	9	;# 
+    70     000A                     PCLATH          equ	10	;# 
+    71     000B                     INTCON          equ	11	;# 
+    72     000C                     PIR1            equ	12	;# 
+    73     000D                     PIR2            equ	13	;# 
+    74     000E                     TMR1            equ	14	;# 
+    75     000E                     TMR1L           equ	14	;# 
+    76     000F                     TMR1H           equ	15	;# 
+    77     0010                     T1CON           equ	16	;# 
+    78     0011                     TMR2            equ	17	;# 
+    79     0012                     T2CON           equ	18	;# 
+    80     0013                     SSPBUF          equ	19	;# 
+    81     0014                     SSPCON          equ	20	;# 
+    82     0015                     CCPR1           equ	21	;# 
+    83     0015                     CCPR1L          equ	21	;# 
+    84     0016                     CCPR1H          equ	22	;# 
+    85     0017                     CCP1CON         equ	23	;# 
+    86     0018                     RCSTA           equ	24	;# 
+    87     0019                     TXREG           equ	25	;# 
+    88     001A                     RCREG           equ	26	;# 
+    89     001B                     CCPR2           equ	27	;# 
+    90     001B                     CCPR2L          equ	27	;# 
+    91     001C                     CCPR2H          equ	28	;# 
+    92     001D                     CCP2CON         equ	29	;# 
+    93     001E                     ADRESH          equ	30	;# 
+    94     001F                     ADCON0          equ	31	;# 
+    95     0081                     OPTION_REG      equ	129	;# 
+    96     0085                     TRISA           equ	133	;# 
+    97     0086                     TRISB           equ	134	;# 
+    98     0087                     TRISC           equ	135	;# 
+    99     0088                     TRISD           equ	136	;# 
+   100     0089                     TRISE           equ	137	;# 
+   101     008C                     PIE1            equ	140	;# 
+   102     008D                     PIE2            equ	141	;# 
+   103     008E                     PCON            equ	142	;# 
+   104     0091                     SSPCON2         equ	145	;# 
+   105     0092                     PR2             equ	146	;# 
+   106     0093                     SSPADD          equ	147	;# 
+   107     0094                     SSPSTAT         equ	148	;# 
+   108     0098                     TXSTA           equ	152	;# 
+   109     0099                     SPBRG           equ	153	;# 
+   110     009C                     CMCON           equ	156	;# 
+   111     009D                     CVRCON          equ	157	;# 
+   112     009E                     ADRESL          equ	158	;# 
+   113     009F                     ADCON1          equ	159	;# 
+   114     010C                     EEDATA          equ	268	;# 
+   115     010D                     EEADR           equ	269	;# 
+   116     010E                     EEDATH          equ	270	;# 
+   117     010F                     EEADRH          equ	271	;# 
+   118     018C                     EECON1          equ	396	;# 
+   119     018D                     EECON2          equ	397	;# 
+   120     0000                     INDF            equ	0	;# 
+   121     0001                     TMR0            equ	1	;# 
+   122     0002                     PCL             equ	2	;# 
+   123     0003                     STATUS          equ	3	;# 
+   124     0004                     FSR             equ	4	;# 
+   125     0005                     PORTA           equ	5	;# 
+   126     0006                     PORTB           equ	6	;# 
+   127     0007                     PORTC           equ	7	;# 
+   128     0008                     PORTD           equ	8	;# 
+   129     0009                     PORTE           equ	9	;# 
+   130     000A                     PCLATH          equ	10	;# 
+   131     000B                     INTCON          equ	11	;# 
+   132     000C                     PIR1            equ	12	;# 
+   133     000D                     PIR2            equ	13	;# 
+   134     000E                     TMR1            equ	14	;# 
+   135     000E                     TMR1L           equ	14	;# 
+   136     000F                     TMR1H           equ	15	;# 
+   137     0010                     T1CON           equ	16	;# 
+   138     0011                     TMR2            equ	17	;# 
+   139     0012                     T2CON           equ	18	;# 
+   140     0013                     SSPBUF          equ	19	;# 
+   141     0014                     SSPCON          equ	20	;# 
+   142     0015                     CCPR1           equ	21	;# 
+   143     0015                     CCPR1L          equ	21	;# 
+   144     0016                     CCPR1H          equ	22	;# 
+   145     0017                     CCP1CON         equ	23	;# 
+   146     0018                     RCSTA           equ	24	;# 
+   147     0019                     TXREG           equ	25	;# 
+   148     001A                     RCREG           equ	26	;# 
+   149     001B                     CCPR2           equ	27	;# 
+   150     001B                     CCPR2L          equ	27	;# 
+   151     001C                     CCPR2H          equ	28	;# 
+   152     001D                     CCP2CON         equ	29	;# 
+   153     001E                     ADRESH          equ	30	;# 
+   154     001F                     ADCON0          equ	31	;# 
+   155     0081                     OPTION_REG      equ	129	;# 
+   156     0085                     TRISA           equ	133	;# 
+   157     0086                     TRISB           equ	134	;# 
+   158     0087                     TRISC           equ	135	;# 
+   159     0088                     TRISD           equ	136	;# 
+   160     0089                     TRISE           equ	137	;# 
+   161     008C                     PIE1            equ	140	;# 
+   162     008D                     PIE2            equ	141	;# 
+   163     008E                     PCON            equ	142	;# 
+   164     0091                     SSPCON2         equ	145	;# 
+   165     0092                     PR2             equ	146	;# 
+   166     0093                     SSPADD          equ	147	;# 
+   167     0094                     SSPSTAT         equ	148	;# 
+   168     0098                     TXSTA           equ	152	;# 
+   169     0099                     SPBRG           equ	153	;# 
+   170     009C                     CMCON           equ	156	;# 
+   171     009D                     CVRCON          equ	157	;# 
+   172     009E                     ADRESL          equ	158	;# 
+   173     009F                     ADCON1          equ	159	;# 
+   174     010C                     EEDATA          equ	268	;# 
+   175     010D                     EEADR           equ	269	;# 
+   176     010E                     EEDATH          equ	270	;# 
+   177     010F                     EEADRH          equ	271	;# 
+   178     018C                     EECON1          equ	396	;# 
+   179     018D                     EECON2          equ	397	;# 
+   180     0000                     INDF            equ	0	;# 
+   181     0001                     TMR0            equ	1	;# 
+   182     0002                     PCL             equ	2	;# 
+   183     0003                     STATUS          equ	3	;# 
+   184     0004                     FSR             equ	4	;# 
+   185     0005                     PORTA           equ	5	;# 
+   186     0006                     PORTB           equ	6	;# 
+   187     0007                     PORTC           equ	7	;# 
+   188     0008                     PORTD           equ	8	;# 
+   189     0009                     PORTE           equ	9	;# 
+   190     000A                     PCLATH          equ	10	;# 
+   191     000B                     INTCON          equ	11	;# 
+   192     000C                     PIR1            equ	12	;# 
+   193     000D                     PIR2            equ	13	;# 
+   194     000E                     TMR1            equ	14	;# 
+   195     000E                     TMR1L           equ	14	;# 
+   196     000F                     TMR1H           equ	15	;# 
+   197     0010                     T1CON           equ	16	;# 
+   198     0011                     TMR2            equ	17	;# 
+   199     0012                     T2CON           equ	18	;# 
+   200     0013                     SSPBUF          equ	19	;# 
+   201     0014                     SSPCON          equ	20	;# 
+   202     0015                     CCPR1           equ	21	;# 
+   203     0015                     CCPR1L          equ	21	;# 
+   204     0016                     CCPR1H          equ	22	;# 
+   205     0017                     CCP1CON         equ	23	;# 
+   206     0018                     RCSTA           equ	24	;# 
+   207     0019                     TXREG           equ	25	;# 
+   208     001A                     RCREG           equ	26	;# 
+   209     001B                     CCPR2           equ	27	;# 
+   210     001B                     CCPR2L          equ	27	;# 
+   211     001C                     CCPR2H          equ	28	;# 
+   212     001D                     CCP2CON         equ	29	;# 
+   213     001E                     ADRESH          equ	30	;# 
+   214     001F                     ADCON0          equ	31	;# 
+   215     0081                     OPTION_REG      equ	129	;# 
+   216     0085                     TRISA           equ	133	;# 
+   217     0086                     TRISB           equ	134	;# 
+   218     0087                     TRISC           equ	135	;# 
+   219     0088                     TRISD           equ	136	;# 
+   220     0089                     TRISE           equ	137	;# 
+   221     008C                     PIE1            equ	140	;# 
+   222     008D                     PIE2            equ	141	;# 
+   223     008E                     PCON            equ	142	;# 
+   224     0091                     SSPCON2         equ	145	;# 
+   225     0092                     PR2             equ	146	;# 
+   226     0093                     SSPADD          equ	147	;# 
+   227     0094                     SSPSTAT         equ	148	;# 
+   228     0098                     TXSTA           equ	152	;# 
+   229     0099                     SPBRG           equ	153	;# 
+   230     009C                     CMCON           equ	156	;# 
+   231     009D                     CVRCON          equ	157	;# 
+   232     009E                     ADRESL          equ	158	;# 
+   233     009F                     ADCON1          equ	159	;# 
+   234     010C                     EEDATA          equ	268	;# 
+   235     010D                     EEADR           equ	269	;# 
+   236     010E                     EEDATH          equ	270	;# 
+   237     010F                     EEADRH          equ	271	;# 
+   238     018C                     EECON1          equ	396	;# 
+   239     018D                     EECON2          equ	397	;# 
+   240     0000                     INDF            equ	0	;# 
+   241     0001                     TMR0            equ	1	;# 
+   242     0002                     PCL             equ	2	;# 
+   243     0003                     STATUS          equ	3	;# 
+   244     0004                     FSR             equ	4	;# 
+   245     0005                     PORTA           equ	5	;# 
+   246     0006                     PORTB           equ	6	;# 
+   247     0007                     PORTC           equ	7	;# 
+   248     0008                     PORTD           equ	8	;# 
+   249     0009                     PORTE           equ	9	;# 
+   250     000A                     PCLATH          equ	10	;# 
+   251     000B                     INTCON          equ	11	;# 
+   252     000C                     PIR1            equ	12	;# 
+   253     000D                     PIR2            equ	13	;# 
+   254     000E                     TMR1            equ	14	;# 
+   255     000E                     TMR1L           equ	14	;# 
+   256     000F                     TMR1H           equ	15	;# 
+   257     0010                     T1CON           equ	16	;# 
+   258     0011                     TMR2            equ	17	;# 
+   259     0012                     T2CON           equ	18	;# 
+   260     0013                     SSPBUF          equ	19	;# 
+   261     0014                     SSPCON          equ	20	;# 
+   262     0015                     CCPR1           equ	21	;# 
+   263     0015                     CCPR1L          equ	21	;# 
+   264     0016                     CCPR1H          equ	22	;# 
+   265     0017                     CCP1CON         equ	23	;# 
+   266     0018                     RCSTA           equ	24	;# 
+   267     0019                     TXREG           equ	25	;# 
+   268     001A                     RCREG           equ	26	;# 
+   269     001B                     CCPR2           equ	27	;# 
+   270     001B                     CCPR2L          equ	27	;# 
+   271     001C                     CCPR2H          equ	28	;# 
+   272     001D                     CCP2CON         equ	29	;# 
+   273     001E                     ADRESH          equ	30	;# 
+   274     001F                     ADCON0          equ	31	;# 
+   275     0081                     OPTION_REG      equ	129	;# 
+   276     0085                     TRISA           equ	133	;# 
+   277     0086                     TRISB           equ	134	;# 
+   278     0087                     TRISC           equ	135	;# 
+   279     0088                     TRISD           equ	136	;# 
+   280     0089                     TRISE           equ	137	;# 
+   281     008C                     PIE1            equ	140	;# 
+   282     008D                     PIE2            equ	141	;# 
+   283     008E                     PCON            equ	142	;# 
+   284     0091                     SSPCON2         equ	145	;# 
+   285     0092                     PR2             equ	146	;# 
+   286     0093                     SSPADD          equ	147	;# 
+   287     0094                     SSPSTAT         equ	148	;# 
+   288     0098                     TXSTA           equ	152	;# 
+   289     0099                     SPBRG           equ	153	;# 
+   290     009C                     CMCON           equ	156	;# 
+   291     009D                     CVRCON          equ	157	;# 
+   292     009E                     ADRESL          equ	158	;# 
+   293     009F                     ADCON1          equ	159	;# 
+   294     010C                     EEDATA          equ	268	;# 
+   295     010D                     EEADR           equ	269	;# 
+   296     010E                     EEDATH          equ	270	;# 
+   297     010F                     EEADRH          equ	271	;# 
+   298     018C                     EECON1          equ	396	;# 
+   299     018D                     EECON2          equ	397	;# 
+   300     0000                     INDF            equ	0	;# 
+   301     0001                     TMR0            equ	1	;# 
+   302     0002                     PCL             equ	2	;# 
+   303     0003                     STATUS          equ	3	;# 
+   304     0004                     FSR             equ	4	;# 
+   305     0005                     PORTA           equ	5	;# 
+   306     0006                     PORTB           equ	6	;# 
+   307     0007                     PORTC           equ	7	;# 
+   308     0008                     PORTD           equ	8	;# 
+   309     0009                     PORTE           equ	9	;# 
+   310     000A                     PCLATH          equ	10	;# 
+   311     000B                     INTCON          equ	11	;# 
+   312     000C                     PIR1            equ	12	;# 
+   313     000D                     PIR2            equ	13	;# 
+   314     000E                     TMR1            equ	14	;# 
+   315     000E                     TMR1L           equ	14	;# 
+   316     000F                     TMR1H           equ	15	;# 
+   317     0010                     T1CON           equ	16	;# 
+   318     0011                     TMR2            equ	17	;# 
+   319     0012                     T2CON           equ	18	;# 
+   320     0013                     SSPBUF          equ	19	;# 
+   321     0014                     SSPCON          equ	20	;# 
+   322     0015                     CCPR1           equ	21	;# 
+   323     0015                     CCPR1L          equ	21	;# 
+   324     0016                     CCPR1H          equ	22	;# 
+   325     0017                     CCP1CON         equ	23	;# 
+   326     0018                     RCSTA           equ	24	;# 
+   327     0019                     TXREG           equ	25	;# 
+   328     001A                     RCREG           equ	26	;# 
+   329     001B                     CCPR2           equ	27	;# 
+   330     001B                     CCPR2L          equ	27	;# 
+   331     001C                     CCPR2H          equ	28	;# 
+   332     001D                     CCP2CON         equ	29	;# 
+   333     001E                     ADRESH          equ	30	;# 
+   334     001F                     ADCON0          equ	31	;# 
+   335     0081                     OPTION_REG      equ	129	;# 
+   336     0085                     TRISA           equ	133	;# 
+   337     0086                     TRISB           equ	134	;# 
+   338     0087                     TRISC           equ	135	;# 
+   339     0088                     TRISD           equ	136	;# 
+   340     0089                     TRISE           equ	137	;# 
+   341     008C                     PIE1            equ	140	;# 
+   342     008D                     PIE2            equ	141	;# 
+   343     008E                     PCON            equ	142	;# 
+   344     0091                     SSPCON2         equ	145	;# 
+   345     0092                     PR2             equ	146	;# 
+   346     0093                     SSPADD          equ	147	;# 
+   347     0094                     SSPSTAT         equ	148	;# 
+   348     0098                     TXSTA           equ	152	;# 
+   349     0099                     SPBRG           equ	153	;# 
+   350     009C                     CMCON           equ	156	;# 
+   351     009D                     CVRCON          equ	157	;# 
+   352     009E                     ADRESL          equ	158	;# 
+   353     009F                     ADCON1          equ	159	;# 
+   354     010C                     EEDATA          equ	268	;# 
+   355     010D                     EEADR           equ	269	;# 
+   356     010E                     EEDATH          equ	270	;# 
+   357     010F                     EEADRH          equ	271	;# 
+   358     018C                     EECON1          equ	396	;# 
+   359     018D                     EECON2          equ	397	;# 
+   360     0000                     INDF            equ	0	;# 
+   361     0001                     TMR0            equ	1	;# 
+   362     0002                     PCL             equ	2	;# 
+   363     0003                     STATUS          equ	3	;# 
+   364     0004                     FSR             equ	4	;# 
+   365     0005                     PORTA           equ	5	;# 
+   366     0006                     PORTB           equ	6	;# 
+   367     0007                     PORTC           equ	7	;# 
+   368     0008                     PORTD           equ	8	;# 
+   369     0009                     PORTE           equ	9	;# 
+   370     000A                     PCLATH          equ	10	;# 
+   371     000B                     INTCON          equ	11	;# 
+   372     000C                     PIR1            equ	12	;# 
+   373     000D                     PIR2            equ	13	;# 
+   374     000E                     TMR1            equ	14	;# 
+   375     000E                     TMR1L           equ	14	;# 
+   376     000F                     TMR1H           equ	15	;# 
+   377     0010                     T1CON           equ	16	;# 
+   378     0011                     TMR2            equ	17	;# 
+   379     0012                     T2CON           equ	18	;# 
+   380     0013                     SSPBUF          equ	19	;# 
+   381     0014                     SSPCON          equ	20	;# 
+   382     0015                     CCPR1           equ	21	;# 
+   383     0015                     CCPR1L          equ	21	;# 
+   384     0016                     CCPR1H          equ	22	;# 
+   385     0017                     CCP1CON         equ	23	;# 
+   386     0018                     RCSTA           equ	24	;# 
+   387     0019                     TXREG           equ	25	;# 
+   388     001A                     RCREG           equ	26	;# 
+   389     001B                     CCPR2           equ	27	;# 
+   390     001B                     CCPR2L          equ	27	;# 
+   391     001C                     CCPR2H          equ	28	;# 
+   392     001D                     CCP2CON         equ	29	;# 
+   393     001E                     ADRESH          equ	30	;# 
+   394     001F                     ADCON0          equ	31	;# 
+   395     0081                     OPTION_REG      equ	129	;# 
+   396     0085                     TRISA           equ	133	;# 
+   397     0086                     TRISB           equ	134	;# 
+   398     0087                     TRISC           equ	135	;# 
+   399     0088                     TRISD           equ	136	;# 
+   400     0089                     TRISE           equ	137	;# 
+   401     008C                     PIE1            equ	140	;# 
+   402     008D                     PIE2            equ	141	;# 
+   403     008E                     PCON            equ	142	;# 
+   404     0091                     SSPCON2         equ	145	;# 
+   405     0092                     PR2             equ	146	;# 
+   406     0093                     SSPADD          equ	147	;# 
+   407     0094                     SSPSTAT         equ	148	;# 
+   408     0098                     TXSTA           equ	152	;# 
+   409     0099                     SPBRG           equ	153	;# 
+   410     009C                     CMCON           equ	156	;# 
+   411     009D                     CVRCON          equ	157	;# 
+   412     009E                     ADRESL          equ	158	;# 
+   413     009F                     ADCON1          equ	159	;# 
+   414     010C                     EEDATA          equ	268	;# 
+   415     010D                     EEADR           equ	269	;# 
+   416     010E                     EEDATH          equ	270	;# 
+   417     010F                     EEADRH          equ	271	;# 
+   418     018C                     EECON1          equ	396	;# 
+   419     018D                     EECON2          equ	397	;# 
+   420                           
+   421                           	psect	idataBANK0
+   422     0386                     __pidataBANK0:
+   423                           
+   424                           ;initializer for main@F1031
+   425     0386  343F               	retlw	63
+   426     0387  3406               	retlw	6
+   427     0388  345B               	retlw	91
+   428     0389  344F               	retlw	79
+   429     038A  3466               	retlw	102
+   430     038B  346D               	retlw	109
+   431     038C  347D               	retlw	125
+   432     038D  3407               	retlw	7
+   433     038E  347F               	retlw	127
+   434     038F  346F               	retlw	111
+   435     0013                     _SSPBUF         set	19
+   436     0005                     _PORTA          set	5
+   437     0008                     _PORTD          set	8
+   438     0006                     _PORTB          set	6
+   439     00A5                     _SSPEN          set	165
+   440     00A3                     _SSPM3          set	163
+   441     0091                     _SSPCON2        set	145
+   442     0093                     _SSPADD         set	147
+   443     0085                     _TRISA          set	133
+   444     0088                     _TRISD          set	136
+   445     048E                     _ACKSTAT        set	1166
+   446     048C                     _ACKEN          set	1164
+   447     048B                     _RCEN           set	1163
+   448     048A                     _PEN            set	1162
+   449     0488                     _SEN            set	1160
+   450     04A2                     _R_nW           set	1186
+   451                           
+   452                           	psect	cinit
+   453     07EE                     start_initialization:	
+   454                           ; #config settings
+   455                           
+   456     07EE                     __initialization:
+   457                           
+   458                           ; Initialize objects allocated to BANK0
+   459     07EE  1383               	bcf	3,7	;select IRP bank0
+   460     07EF  305B               	movlw	low (__pdataBANK0+10)
+   461     07F0  00FD               	movwf	btemp+-1
+   462     07F1  3003               	movlw	high __pidataBANK0
+   463     07F2  00FE               	movwf	btemp
+   464     07F3  3086               	movlw	low __pidataBANK0
+   465     07F4  00FF               	movwf	btemp+1
+   466     07F5  3051               	movlw	low __pdataBANK0
+   467     07F6  0084               	movwf	4
+   468     07F7  120A  118A  23C8  120A  118A  	fcall	init_ram0
+   469     07FC                     end_of_initialization:	
+   470                           ;End of C runtime variable initialization code
+   471                           
+   472     07FC                     __end_of__initialization:
+   473     07FC  0183               	clrf	3
+   474     07FD  120A  118A  2DF8   	ljmp	_main	;jump to C main() function
+   475                           
+   476                           	psect	dataBANK0
+   477     0051                     __pdataBANK0:
+   478     0051                     main@F1031:
+   479     0051                     	ds	10
+   480                           
+   481                           	psect	inittext
+   482     03C4                     init_fetch0:	
+   483                           ;	Called with low address in FSR and high address in W
+   484                           
+   485     03C4  087E               	movf	btemp,w
+   486     03C5  008A               	movwf	10
+   487     03C6  087F               	movf	btemp+1,w
+   488     03C7  0082               	movwf	2
+   489     03C8                     init_ram0:	
+   490                           ;Called with:
+   491                           ;	high address of idata address in btemp 
+   492                           ;	low address of idata address in btemp+1 
+   493                           ;	low address of data in FSR
+   494                           ;	high address + 1 of data in btemp-1
+   495                           
+   496     03C8  120A  118A  23C4  120A  118A  	fcall	init_fetch0
+   497     03CD  0080               	movwf	0
+   498     03CE  0A84               	incf	4,f
+   499     03CF  0804               	movf	4,w
+   500     03D0  067D               	xorwf	btemp+-1,w
+   501     03D1  1903               	btfsc	3,2
+   502     03D2  3400               	retlw	0
+   503     03D3  0AFF               	incf	btemp+1,f
+   504     03D4  1903               	btfsc	3,2
+   505     03D5  0AFE               	incf	btemp,f
+   506     03D6  2BC8               	goto	init_ram0
+   507                           
+   508                           	psect	cstackCOMMON
+   509     0070                     __pcstackCOMMON:
+   510     0070                     ?_read_external_eeprom:
+   511     0070                     ?_i2c_start:	
+   512                           ; 1 bytes @ 0x0
+   513                           
+   514     0070                     ?_i2c_stop:	
+   515                           ; 1 bytes @ 0x0
+   516                           
+   517     0070                     ?_i2c_rep_start:	
+   518                           ; 1 bytes @ 0x0
+   519                           
+   520     0070                     ?_i2c_read:	
+   521                           ; 1 bytes @ 0x0
+   522                           
+   523     0070                     ?_init_digital_keypad:	
+   524                           ; 1 bytes @ 0x0
+   525                           
+   526     0070                     ?_read_digital_keypad:	
+   527                           ; 1 bytes @ 0x0
+   528                           
+   529     0070                     ?_init_ssd:	
+   530                           ; 1 bytes @ 0x0
+   531                           
+   532     0070                     ?_write_ssd:	
+   533                           ; 1 bytes @ 0x0
+   534                           
+   535     0070                     ?_init_config:	
+   536                           ; 1 bytes @ 0x0
+   537                           
+   538     0070                     ?_main:	
+   539                           ; 1 bytes @ 0x0
+   540                           
+   541     0070                     ?_i2c_wait_for_idle:	
+   542                           ; 1 bytes @ 0x0
+   543                           
+   544     0070                     ?_i2c_write:	
+   545                           ; 1 bytes @ 0x0
+   546                           
+   547     0070                     ?___wmul:	
+   548                           ; 2 bytes @ 0x0
+   549                           
+   550     0070                     ?___lwdiv:	
+   551                           ; 2 bytes @ 0x0
+   552                           
+   553     0070                     ?___lldiv:	
+   554                           ; 2 bytes @ 0x0
+   555                           
+   556     0070                     write_ssd@data:	
+   557                           ; 4 bytes @ 0x0
+   558                           
+   559     0070                     i2c_read@data:	
+   560                           ; 1 bytes @ 0x0
+   561                           
+   562     0070                     i2c_write@data:	
+   563                           ; 1 bytes @ 0x0
+   564                           
+   565     0070                     ___wmul@multiplier:	
+   566                           ; 1 bytes @ 0x0
+   567                           
+   568     0070                     ___lwdiv@divisor:	
+   569                           ; 2 bytes @ 0x0
+   570                           
+   571     0070                     ___lldiv@divisor:	
+   572                           ; 2 bytes @ 0x0
+   573                           
+   574     0070                     ??_i2c_start:	
+   575                           ; 4 bytes @ 0x0
+   576                           
+   577     0070                     ??_i2c_write:	
+   578                           ; 1 bytes @ 0x0
+   579                           
+   580     0070                     ??_i2c_stop:	
+   581                           ; 1 bytes @ 0x0
+   582                           
+   583     0070                     ??_i2c_rep_start:	
+   584                           ; 1 bytes @ 0x0
+   585                           
+   586     0070                     ??_i2c_read:	
+   587                           ; 1 bytes @ 0x0
+   588                           
+   589     0070                     ??_init_digital_keypad:	
+   590                           ; 1 bytes @ 0x0
+   591                           
+   592     0070                     ??_read_digital_keypad:	
+   593                           ; 1 bytes @ 0x0
+   594                           
+   595     0070                     ??_init_ssd:	
+   596                           ; 1 bytes @ 0x0
+   597                           
+   598     0070                     ??_i2c_wait_for_idle:	
+   599                           ; 1 bytes @ 0x0
+   600                           
+   601                           
+   602                           ; 1 bytes @ 0x0
+   603     0070                     	ds	1
+   604     0071                     read_external_eeprom@address:
+   605     0071                     ??_read_external_eeprom:	
+   606                           ; 1 bytes @ 0x1
+   607                           
+   608     0071                     ??_write_ssd:	
+   609                           ; 1 bytes @ 0x1
+   610                           
+   611                           
+   612                           ; 1 bytes @ 0x1
+   613     0071                     	ds	1
+   614     0072                     read_external_eeprom@data:
+   615     0072                     write_ssd@delay:	
+   616                           ; 1 bytes @ 0x2
+   617                           
+   618     0072                     ___wmul@multiplicand:	
+   619                           ; 2 bytes @ 0x2
+   620                           
+   621     0072                     ___lwdiv@dividend:	
+   622                           ; 2 bytes @ 0x2
+   623                           
+   624                           
+   625                           ; 2 bytes @ 0x2
+   626     0072                     	ds	1
+   627     0073                     read_digital_keypad@mode:
+   628                           
+   629                           ; 1 bytes @ 0x3
+   630     0073                     	ds	1
+   631     0074                     write_ssd@digit:
+   632     0074                     ___wmul@product:	
+   633                           ; 1 bytes @ 0x4
+   634                           
+   635     0074                     ___lwdiv@quotient:	
+   636                           ; 2 bytes @ 0x4
+   637                           
+   638     0074                     ___lldiv@dividend:	
+   639                           ; 2 bytes @ 0x4
+   640                           
+   641     0074                     ??___wmul:	
+   642                           ; 4 bytes @ 0x4
+   643                           
+   644     0074                     ??___lwdiv:	
+   645                           ; 1 bytes @ 0x4
+   646                           
+   647                           
+   648                           ; 1 bytes @ 0x4
+   649     0074                     	ds	2
+   650     0076                     ___lwdiv@counter:
+   651                           
+   652                           ; 1 bytes @ 0x6
+   653     0076                     	ds	1
+   654     0077                     ?___lwmod:
+   655     0077                     ___lwmod@divisor:	
+   656                           ; 2 bytes @ 0x7
+   657                           
+   658                           
+   659                           ; 2 bytes @ 0x7
+   660     0077                     	ds	1
+   661     0078                     ??___lldiv:
+   662                           
+   663                           ; 1 bytes @ 0x8
+   664     0078                     	ds	1
+   665     0079                     ___lwmod@dividend:
+   666     0079                     ___lldiv@quotient:	
+   667                           ; 2 bytes @ 0x9
+   668                           
+   669                           
+   670                           ; 4 bytes @ 0x9
+   671     0079                     	ds	2
+   672     007B                     ___lwmod@counter:
+   673     007B                     ??___lwmod:	
+   674                           ; 1 bytes @ 0xB
+   675                           
+   676                           
+   677                           ; 1 bytes @ 0xB
+   678     007B                     	ds	1
+   679     007C                     ?_write_external_eeprom:
+   680     007C                     write_external_eeprom@data:	
+   681                           ; 1 bytes @ 0xC
+   682                           
+   683                           
+   684                           ; 1 bytes @ 0xC
+   685     007C                     	ds	1
+   686     007D                     ___lldiv@counter:
+   687     007D                     ??_write_external_eeprom:	
+   688                           ; 1 bytes @ 0xD
+   689                           
+   690                           
+   691                           ; 1 bytes @ 0xD
+   692     007D                     	ds	1
+   693     007E                     ??_init_config:
+   694                           
+   695                           	psect	cstackBANK0
+   696     0020                     __pcstackBANK0:	
+   697                           ; 1 bytes @ 0xE
+   698                           
+   699     0020                     ?_init_i2c:
+   700     0020                     write_external_eeprom@wait:	
+   701                           ; 1 bytes @ 0x0
+   702                           
+   703     0020                     init_i2c@baud:	
+   704                           ; 2 bytes @ 0x0
+   705                           
+   706                           
+   707                           ; 4 bytes @ 0x0
+   708     0020                     	ds	2
+   709     0022                     write_external_eeprom@address:
+   710                           
+   711                           ; 1 bytes @ 0x2
+   712     0022                     	ds	2
+   713     0024                     ??_init_i2c:
+   714                           
+   715                           ; 1 bytes @ 0x4
+   716     0024                     	ds	4
+   717     0028                     ??_main:
+   718                           
+   719                           ; 1 bytes @ 0x8
+   720     0028                     	ds	12
+   721     0034                     main@digits:
+   722                           
+   723                           ; 10 bytes @ 0x14
+   724     0034                     	ds	10
+   725     003E                     main@ssd:
+   726                           
+   727                           ; 10 bytes @ 0x1E
+   728     003E                     	ds	10
+   729     0048                     main@key:
+   730                           
+   731                           ; 1 bytes @ 0x28
+   732     0048                     	ds	1
+   733     0049                     main@first:
+   734                           
+   735                           ; 1 bytes @ 0x29
+   736     0049                     	ds	1
+   737     004A                     main@second:
+   738                           
+   739                           ; 1 bytes @ 0x2A
+   740     004A                     	ds	1
+   741     004B                     main@third:
+   742                           
+   743                           ; 1 bytes @ 0x2B
+   744     004B                     	ds	1
+   745     004C                     main@fourth:
+   746                           
+   747                           ; 1 bytes @ 0x2C
+   748     004C                     	ds	1
+   749     004D                     main@delay:
+   750                           
+   751                           ; 2 bytes @ 0x2D
+   752     004D                     	ds	2
+   753     004F                     main@count:
+   754                           
+   755                           ; 2 bytes @ 0x2F
+   756     004F                     	ds	2
+   757                           
+   758                           	psect	maintext
+   759     05F8                     __pmaintext:	
+   760 ;;
+   761 ;;Main: autosize = 0, tempsize = 12, incstack = 0, save=0
+   762 ;;
+   763 ;; *************** function _main *****************
+   764 ;; Defined at:
+   765 ;;		line 15 in file "main.c"
+   766 ;; Parameters:    Size  Location     Type
+   767 ;;		None
+   768 ;; Auto vars:     Size  Location     Type
+   769 ;;  ssd            10   30[BANK0 ] unsigned char [10]
+   770 ;;  digits         10   20[BANK0 ] unsigned char [10]
+   771 ;;  count           2   47[BANK0 ] unsigned int 
+   772 ;;  delay           2   45[BANK0 ] unsigned int 
+   773 ;;  fourth          1   44[BANK0 ] unsigned char 
+   774 ;;  third           1   43[BANK0 ] unsigned char 
+   775 ;;  second          1   42[BANK0 ] unsigned char 
+   776 ;;  first           1   41[BANK0 ] unsigned char 
+   777 ;;  key             1   40[BANK0 ] unsigned char 
+   778 ;; Return value:  Size  Location     Type
+   779 ;;                  1    wreg      void 
+   780 ;; Registers used:
+   781 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   782 ;; Tracked objects:
+   783 ;;		On entry : B00/0
+   784 ;;		On exit  : 0/0
+   785 ;;		Unchanged: 0/0
+   786 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   787 ;;      Params:         0       0       0       0       0
+   788 ;;      Locals:         0      29       0       0       0
+   789 ;;      Temps:          0      12       0       0       0
+   790 ;;      Totals:         0      41       0       0       0
+   791 ;;Total ram usage:       41 bytes
+   792 ;; Hardware stack levels required when called: 4
+   793 ;; This function calls:
+   794 ;;		___lwdiv
+   795 ;;		___lwmod
+   796 ;;		___wmul
+   797 ;;		_init_config
+   798 ;;		_read_digital_keypad
+   799 ;;		_read_external_eeprom
+   800 ;;		_write_external_eeprom
+   801 ;;		_write_ssd
+   802 ;; This function is called by:
+   803 ;;		Startup code after reset
+   804 ;; This function uses a non-reentrant model
+   805 ;;
+   806                           
+   807     05F8                     _main:	
+   808                           ;psect for function _main
+   809                           
+   810     05F8                     l1147:	
+   811                           ;incstack = 0
+   812                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   813                           
+   814                           
+   815                           ;main.c: 16: 
+   816     05F8  120A  118A  23ED  120A  118A  	fcall	_init_config
+   817     05FD                     l1149:
+   818     05FD                     l1151:
+   819                           
+   820                           ;main.c: 19:     unsigned char second = read_external_eeprom(0x01);
+   821     05FD  1283               	bcf	3,5	;RP0=0, select bank0
+   822     05FE  1303               	bcf	3,6	;RP1=0, select bank0
+   823     05FF  01CD               	clrf	main@delay
+   824     0600  01CE               	clrf	main@delay+1
+   825     0601                     l1153:
+   826                           
+   827                           ;main.c: 20:     unsigned char third = read_external_eeprom(0x02);;main.c: 21:     unsig
+      +                          ned char fourth = read_external_eeprom(0x03);;main.c: 23: 
+   828     0601  3051               	movlw	main@F1031& (0+255)
+   829     0602  0084               	movwf	4
+   830     0603  3034               	movlw	low main@digits
+   831     0604  00A8               	movwf	??_main
+   832     0605  300A               	movlw	10
+   833     0606  00A9               	movwf	??_main+1
+   834     0607                     u840:
+   835     0607  1383               	bcf	3,7	;select IRP bank0
+   836     0608  0800               	movf	0,w
+   837     0609  00AA               	movwf	??_main+2
+   838     060A  0A04               	incf	4,w
+   839     060B  00AB               	movwf	??_main+3
+   840     060C  0828               	movf	??_main,w
+   841     060D  0084               	movwf	4
+   842     060E  082A               	movf	??_main+2,w
+   843     060F  0080               	movwf	0
+   844     0610  0A04               	incf	4,w
+   845     0611  00A8               	movwf	??_main
+   846     0612  082B               	movf	??_main+3,w
+   847     0613  0084               	movwf	4
+   848     0614  0BA9               	decfsz	??_main+1,f
+   849     0615  2E07               	goto	u840
+   850     0616                     l1155:
+   851                           
+   852                           ;main.c: 27:     if(second > 9 )
+   853     0616  3000               	movlw	0
+   854     0617  120A  118A  2456  120A  118A  	fcall	_read_external_eeprom
+   855     061C  1283               	bcf	3,5	;RP0=0, select bank0
+   856     061D  1303               	bcf	3,6	;RP1=0, select bank0
+   857     061E  00C9               	movwf	main@first
+   858     061F                     l1157:
+   859                           
+   860                           ;main.c: 28:         second = 0;
+   861     061F  3001               	movlw	1
+   862     0620  120A  118A  2456  120A  118A  	fcall	_read_external_eeprom
+   863     0625  1283               	bcf	3,5	;RP0=0, select bank0
+   864     0626  1303               	bcf	3,6	;RP1=0, select bank0
+   865     0627  00CA               	movwf	main@second
+   866     0628                     l1159:
+   867                           
+   868                           ;main.c: 29:     if(third > 9 )
+   869     0628  3002               	movlw	2
+   870     0629  120A  118A  2456  120A  118A  	fcall	_read_external_eeprom
+   871     062E  1283               	bcf	3,5	;RP0=0, select bank0
+   872     062F  1303               	bcf	3,6	;RP1=0, select bank0
+   873     0630  00CB               	movwf	main@third
+   874     0631                     l1161:
+   875                           
+   876                           ;main.c: 30:         third = 0;
+   877     0631  3003               	movlw	3
+   878     0632  120A  118A  2456  120A  118A  	fcall	_read_external_eeprom
+   879     0637  1283               	bcf	3,5	;RP0=0, select bank0
+   880     0638  1303               	bcf	3,6	;RP1=0, select bank0
+   881     0639  00CC               	movwf	main@fourth
+   882     063A                     l1163:
+   883                           
+   884                           ;main.c: 34:     count = ((first * 1000) + (second * 100) + (third * 10) + fourth);
+   885     063A  300A               	movlw	10
+   886     063B  0249               	subwf	main@first,w
+   887     063C  1C03               	skipc
+   888     063D  2E3F               	goto	u851
+   889     063E  2E40               	goto	u850
+   890     063F                     u851:
+   891     063F  2E41               	goto	l1167
+   892     0640                     u850:
+   893     0640                     l1165:
+   894                           
+   895                           ;main.c: 35: 
+   896     0640  01C9               	clrf	main@first
+   897     0641                     l1167:
+   898                           
+   899                           ;main.c: 36:    while(1)
+   900     0641  300A               	movlw	10
+   901     0642  024A               	subwf	main@second,w
+   902     0643  1C03               	skipc
+   903     0644  2E46               	goto	u861
+   904     0645  2E47               	goto	u860
+   905     0646                     u861:
+   906     0646  2E48               	goto	l1171
+   907     0647                     u860:
+   908     0647                     l1169:
+   909                           
+   910                           ;main.c: 37:     {
+   911     0647  01CA               	clrf	main@second
+   912     0648                     l1171:
+   913                           
+   914                           ;main.c: 38: 
+   915     0648  300A               	movlw	10
+   916     0649  024B               	subwf	main@third,w
+   917     064A  1C03               	skipc
+   918     064B  2E4D               	goto	u871
+   919     064C  2E4E               	goto	u870
+   920     064D                     u871:
+   921     064D  2E4F               	goto	l1175
+   922     064E                     u870:
+   923     064E                     l1173:
+   924                           
+   925                           ;main.c: 39: 
+   926     064E  01CB               	clrf	main@third
+   927     064F                     l1175:
+   928                           
+   929                           ;main.c: 40:             ssd[0] = digits[(count/1000)%10];
+   930     064F  300A               	movlw	10
+   931     0650  024C               	subwf	main@fourth,w
+   932     0651  1C03               	skipc
+   933     0652  2E54               	goto	u881
+   934     0653  2E55               	goto	u880
+   935     0654                     u881:
+   936     0654  2E56               	goto	l1179
+   937     0655                     u880:
+   938     0655                     l1177:
+   939                           
+   940                           ;main.c: 41:             ssd[1] = digits[(count/100)%10];
+   941     0655  01CC               	clrf	main@fourth
+   942     0656                     l1179:
+   943                           
+   944                           ;main.c: 43:             ssd[3] = digits[(count % 10 )];
+   945     0656  0849               	movf	main@first,w
+   946     0657  00A8               	movwf	??_main
+   947     0658  01A9               	clrf	??_main+1
+   948     0659  0828               	movf	??_main,w
+   949     065A  00F0               	movwf	___wmul@multiplier
+   950     065B  0829               	movf	??_main+1,w
+   951     065C  00F1               	movwf	___wmul@multiplier+1
+   952     065D  30E8               	movlw	232
+   953     065E  00F2               	movwf	___wmul@multiplicand
+   954     065F  3003               	movlw	3
+   955     0660  00F3               	movwf	___wmul@multiplicand+1
+   956     0661  120A  118A  2407  120A  118A  	fcall	___wmul
+   957     0666  0870               	movf	?___wmul,w
+   958     0667  1283               	bcf	3,5	;RP0=0, select bank0
+   959     0668  1303               	bcf	3,6	;RP1=0, select bank0
+   960     0669  00AA               	movwf	??_main+2
+   961     066A  0871               	movf	?___wmul+1,w
+   962     066B  00AB               	movwf	??_main+3
+   963     066C  084A               	movf	main@second,w
+   964     066D  00AC               	movwf	??_main+4
+   965     066E  01AD               	clrf	??_main+5
+   966     066F  082C               	movf	??_main+4,w
+   967     0670  00F0               	movwf	___wmul@multiplier
+   968     0671  082D               	movf	??_main+5,w
+   969     0672  00F1               	movwf	___wmul@multiplier+1
+   970     0673  3064               	movlw	100
+   971     0674  00F2               	movwf	___wmul@multiplicand
+   972     0675  3000               	movlw	0
+   973     0676  00F3               	movwf	___wmul@multiplicand+1
+   974     0677  120A  118A  2407  120A  118A  	fcall	___wmul
+   975     067C  0870               	movf	?___wmul,w
+   976     067D  1283               	bcf	3,5	;RP0=0, select bank0
+   977     067E  1303               	bcf	3,6	;RP1=0, select bank0
+   978     067F  072A               	addwf	??_main+2,w
+   979     0680  00AE               	movwf	??_main+6
+   980     0681  0871               	movf	?___wmul+1,w
+   981     0682  1803               	skipnc
+   982     0683  0A71               	incf	?___wmul+1,w
+   983     0684  072B               	addwf	??_main+3,w
+   984     0685  00AF               	movwf	??_main+7
+   985     0686  084B               	movf	main@third,w
+   986     0687  00B0               	movwf	??_main+8
+   987     0688  01B1               	clrf	??_main+9
+   988     0689  0830               	movf	??_main+8,w
+   989     068A  00F0               	movwf	___wmul@multiplier
+   990     068B  0831               	movf	??_main+9,w
+   991     068C  00F1               	movwf	___wmul@multiplier+1
+   992     068D  300A               	movlw	10
+   993     068E  00F2               	movwf	___wmul@multiplicand
+   994     068F  3000               	movlw	0
+   995     0690  00F3               	movwf	___wmul@multiplicand+1
+   996     0691  120A  118A  2407  120A  118A  	fcall	___wmul
+   997     0696  0870               	movf	?___wmul,w
+   998     0697  1283               	bcf	3,5	;RP0=0, select bank0
+   999     0698  1303               	bcf	3,6	;RP1=0, select bank0
+  1000     0699  072E               	addwf	??_main+6,w
+  1001     069A  00B2               	movwf	??_main+10
+  1002     069B  0871               	movf	?___wmul+1,w
+  1003     069C  1803               	skipnc
+  1004     069D  0A71               	incf	?___wmul+1,w
+  1005     069E  072F               	addwf	??_main+7,w
+  1006     069F  00B3               	movwf	??_main+11
+  1007     06A0  084C               	movf	main@fourth,w
+  1008     06A1  0732               	addwf	??_main+10,w
+  1009     06A2  00CF               	movwf	main@count
+  1010     06A3  3000               	movlw	0
+  1011     06A4  1803               	skipnc
+  1012     06A5  3001               	movlw	1
+  1013     06A6  0733               	addwf	??_main+11,w
+  1014     06A7  00D0               	movwf	main@count+1
+  1015     06A8                     l1181:
+  1016                           
+  1017                           ;main.c: 46: ;main.c: 49:             if(key == 0x02)
+  1018     06A8  300A               	movlw	10
+  1019     06A9  00F7               	movwf	___lwmod@divisor
+  1020     06AA  3000               	movlw	0
+  1021     06AB  00F8               	movwf	___lwmod@divisor+1
+  1022     06AC  30E8               	movlw	232
+  1023     06AD  00F0               	movwf	___lwdiv@divisor
+  1024     06AE  3003               	movlw	3
+  1025     06AF  00F1               	movwf	___lwdiv@divisor+1
+  1026     06B0  1283               	bcf	3,5	;RP0=0, select bank0
+  1027     06B1  1303               	bcf	3,6	;RP1=0, select bank0
+  1028     06B2  0850               	movf	main@count+1,w
+  1029     06B3  00F3               	movwf	___lwdiv@dividend+1
+  1030     06B4  084F               	movf	main@count,w
+  1031     06B5  00F2               	movwf	___lwdiv@dividend
+  1032     06B6  120A  118A  2552  120A  118A  	fcall	___lwdiv
+  1033     06BB  0871               	movf	?___lwdiv+1,w
+  1034     06BC  00FA               	movwf	___lwmod@dividend+1
+  1035     06BD  0870               	movf	?___lwdiv,w
+  1036     06BE  00F9               	movwf	___lwmod@dividend
+  1037     06BF  120A  118A  251A  120A  118A  	fcall	___lwmod
+  1038     06C4  0877               	movf	?___lwmod,w
+  1039     06C5  3E34               	addlw	(low (main@digits| 0))& (0+255)
+  1040     06C6  0084               	movwf	4
+  1041     06C7  1383               	bcf	3,7	;select IRP bank0
+  1042     06C8  0800               	movf	0,w
+  1043     06C9  1283               	bcf	3,5	;RP0=0, select bank0
+  1044     06CA  1303               	bcf	3,6	;RP1=0, select bank0
+  1045     06CB  00BE               	movwf	main@ssd
+  1046     06CC                     l1183:
+  1047                           
+  1048                           ;main.c: 50:             {
+  1049     06CC  300A               	movlw	10
+  1050     06CD  00F7               	movwf	___lwmod@divisor
+  1051     06CE  3000               	movlw	0
+  1052     06CF  00F8               	movwf	___lwmod@divisor+1
+  1053     06D0  3064               	movlw	100
+  1054     06D1  00F0               	movwf	___lwdiv@divisor
+  1055     06D2  3000               	movlw	0
+  1056     06D3  00F1               	movwf	___lwdiv@divisor+1
+  1057     06D4  0850               	movf	main@count+1,w
+  1058     06D5  00F3               	movwf	___lwdiv@dividend+1
+  1059     06D6  084F               	movf	main@count,w
+  1060     06D7  00F2               	movwf	___lwdiv@dividend
+  1061     06D8  120A  118A  2552  120A  118A  	fcall	___lwdiv
+  1062     06DD  0871               	movf	?___lwdiv+1,w
+  1063     06DE  00FA               	movwf	___lwmod@dividend+1
+  1064     06DF  0870               	movf	?___lwdiv,w
+  1065     06E0  00F9               	movwf	___lwmod@dividend
+  1066     06E1  120A  118A  251A  120A  118A  	fcall	___lwmod
+  1067     06E6  0877               	movf	?___lwmod,w
+  1068     06E7  3E34               	addlw	(low (main@digits| 0))& (0+255)
+  1069     06E8  0084               	movwf	4
+  1070     06E9  1383               	bcf	3,7	;select IRP bank0
+  1071     06EA  0800               	movf	0,w
+  1072     06EB  1283               	bcf	3,5	;RP0=0, select bank0
+  1073     06EC  1303               	bcf	3,6	;RP1=0, select bank0
+  1074     06ED  00BF               	movwf	main@ssd+1
+  1075     06EE                     l1185:
+  1076                           
+  1077                           ;main.c: 51:                 delay++;
+  1078     06EE  300A               	movlw	10
+  1079     06EF  00F7               	movwf	___lwmod@divisor
+  1080     06F0  3000               	movlw	0
+  1081     06F1  00F8               	movwf	___lwmod@divisor+1
+  1082     06F2  300A               	movlw	10
+  1083     06F3  00F0               	movwf	___lwdiv@divisor
+  1084     06F4  3000               	movlw	0
+  1085     06F5  00F1               	movwf	___lwdiv@divisor+1
+  1086     06F6  0850               	movf	main@count+1,w
+  1087     06F7  00F3               	movwf	___lwdiv@dividend+1
+  1088     06F8  084F               	movf	main@count,w
+  1089     06F9  00F2               	movwf	___lwdiv@dividend
+  1090     06FA  120A  118A  2552  120A  118A  	fcall	___lwdiv
+  1091     06FF  0871               	movf	?___lwdiv+1,w
+  1092     0700  00FA               	movwf	___lwmod@dividend+1
+  1093     0701  0870               	movf	?___lwdiv,w
+  1094     0702  00F9               	movwf	___lwmod@dividend
+  1095     0703  120A  118A  251A  120A  118A  	fcall	___lwmod
+  1096     0708  0877               	movf	?___lwmod,w
+  1097     0709  3E34               	addlw	(low (main@digits| 0))& (0+255)
+  1098     070A  0084               	movwf	4
+  1099     070B  1383               	bcf	3,7	;select IRP bank0
+  1100     070C  0800               	movf	0,w
+  1101     070D  1283               	bcf	3,5	;RP0=0, select bank0
+  1102     070E  1303               	bcf	3,6	;RP1=0, select bank0
+  1103     070F  00C0               	movwf	main@ssd+2
+  1104     0710                     l1187:
+  1105                           
+  1106                           ;main.c: 52:                 if(delay > 200 )
+  1107     0710  300A               	movlw	10
+  1108     0711  00F7               	movwf	___lwmod@divisor
+  1109     0712  3000               	movlw	0
+  1110     0713  00F8               	movwf	___lwmod@divisor+1
+  1111     0714  0850               	movf	main@count+1,w
+  1112     0715  00FA               	movwf	___lwmod@dividend+1
+  1113     0716  084F               	movf	main@count,w
+  1114     0717  00F9               	movwf	___lwmod@dividend
+  1115     0718  120A  118A  251A  120A  118A  	fcall	___lwmod
+  1116     071D  0877               	movf	?___lwmod,w
+  1117     071E  3E34               	addlw	(low (main@digits| 0))& (0+255)
+  1118     071F  0084               	movwf	4
+  1119     0720  1383               	bcf	3,7	;select IRP bank0
+  1120     0721  0800               	movf	0,w
+  1121     0722  1283               	bcf	3,5	;RP0=0, select bank0
+  1122     0723  1303               	bcf	3,6	;RP1=0, select bank0
+  1123     0724  00C1               	movwf	main@ssd+3
+  1124     0725                     l1189:
+  1125                           
+  1126                           ;main.c: 54:             }
+  1127     0725  303E               	movlw	(low (main@ssd| 0))& (0+255)
+  1128     0726  00F0               	movwf	write_ssd@data
+  1129     0727  120A  118A  24B2  120A  118A  	fcall	_write_ssd
+  1130     072C                     l1191:
+  1131                           
+  1132                           ;main.c: 56:             {
+  1133     072C  3000               	movlw	0
+  1134     072D  120A  118A  242C  120A  118A  	fcall	_read_digital_keypad
+  1135     0732  1283               	bcf	3,5	;RP0=0, select bank0
+  1136     0733  1303               	bcf	3,6	;RP1=0, select bank0
+  1137     0734  00C8               	movwf	main@key
+  1138     0735                     l1193:
+  1139                           
+  1140                           ;main.c: 58:                 delay = 0;
+  1141     0735  3002               	movlw	2
+  1142     0736  0648               	xorwf	main@key,w
+  1143     0737  1D03               	btfss	3,2
+  1144     0738  2F3A               	goto	u891
+  1145     0739  2F3B               	goto	u890
+  1146     073A                     u891:
+  1147     073A  2F4D               	goto	l1199
+  1148     073B                     u890:
+  1149     073B                     l1195:
+  1150                           
+  1151                           ;main.c: 59:                 if(count > 9999 );main.c: 60:                     count = 0
+      +                          ;
+  1152     073B  3001               	movlw	1
+  1153     073C  07CD               	addwf	main@delay,f
+  1154     073D  1803               	skipnc
+  1155     073E  0ACE               	incf	main@delay+1,f
+  1156     073F  3000               	movlw	0
+  1157     0740  07CE               	addwf	main@delay+1,f
+  1158                           
+  1159                           ;main.c: 61:             }
+  1160     0741  3000               	movlw	0
+  1161     0742  024E               	subwf	main@delay+1,w
+  1162     0743  30C9               	movlw	201
+  1163     0744  1903               	skipnz
+  1164     0745  024D               	subwf	main@delay,w
+  1165     0746  1C03               	skipc
+  1166     0747  2F49               	goto	u901
+  1167     0748  2F4A               	goto	u900
+  1168     0749                     u901:
+  1169     0749  2EA8               	goto	l1181
+  1170     074A                     u900:
+  1171     074A                     l1197:
+  1172                           
+  1173                           ;main.c: 62:             else if(key == 0x01)
+  1174     074A  01CF               	clrf	main@count
+  1175     074B  01D0               	clrf	main@count+1
+  1176     074C  2EA8               	goto	l1181
+  1177     074D                     l1199:
+  1178     074D  084D               	movf	main@delay,w
+  1179     074E  044E               	iorwf	main@delay+1,w
+  1180     074F  1903               	btfsc	3,2
+  1181     0750  2F52               	goto	u911
+  1182     0751  2F53               	goto	u910
+  1183     0752                     u911:
+  1184     0752  2F6E               	goto	l1211
+  1185     0753                     u910:
+  1186     0753                     l1201:
+  1187     0753  3000               	movlw	0
+  1188     0754  024E               	subwf	main@delay+1,w
+  1189     0755  30C8               	movlw	200
+  1190     0756  1903               	skipnz
+  1191     0757  024D               	subwf	main@delay,w
+  1192     0758  1803               	skipnc
+  1193     0759  2F5B               	goto	u921
+  1194     075A  2F5C               	goto	u920
+  1195     075B                     u921:
+  1196     075B  2F6E               	goto	l1211
+  1197     075C                     u920:
+  1198     075C                     l1203:
+  1199                           
+  1200                           ;main.c: 65:                     write_external_eeprom(0x01,(count/100)%10);;main.c: 66:
+      +                                               write_external_eeprom(0x02,(count/10) % 10);
+  1201     075C  3001               	movlw	1
+  1202     075D  07CF               	addwf	main@count,f
+  1203     075E  1803               	skipnc
+  1204     075F  0AD0               	incf	main@count+1,f
+  1205     0760  3000               	movlw	0
+  1206     0761  07D0               	addwf	main@count+1,f
+  1207     0762                     l1205:
+  1208                           
+  1209                           ;main.c: 67:                     write_external_eeprom(0x03,count % 10);
+  1210     0762  01CD               	clrf	main@delay
+  1211     0763  01CE               	clrf	main@delay+1
+  1212     0764                     l1207:
+  1213                           
+  1214                           ;main.c: 68:             }
+  1215     0764  3027               	movlw	39
+  1216     0765  0250               	subwf	main@count+1,w
+  1217     0766  3010               	movlw	16
+  1218     0767  1903               	skipnz
+  1219     0768  024F               	subwf	main@count,w
+  1220     0769  1C03               	skipc
+  1221     076A  2F6C               	goto	u931
+  1222     076B  2F6D               	goto	u930
+  1223     076C                     u931:
+  1224     076C  2EA8               	goto	l1181
+  1225     076D                     u930:
+  1226     076D  2F4A               	goto	l1197
+  1227     076E                     l1211:
+  1228     076E  0348               	decf	main@key,w
+  1229     076F  1D03               	btfss	3,2
+  1230     0770  2F72               	goto	u941
+  1231     0771  2F73               	goto	u940
+  1232     0772                     u941:
+  1233     0772  2FE8               	goto	l1215
+  1234     0773                     u940:
+  1235     0773                     l1213:
+  1236                           
+  1237                           ;main.c: 72: }
+  1238     0773  30E8               	movlw	232
+  1239     0774  00F0               	movwf	___lwdiv@divisor
+  1240     0775  3003               	movlw	3
+  1241     0776  00F1               	movwf	___lwdiv@divisor+1
+  1242     0777  0850               	movf	main@count+1,w
+  1243     0778  00F3               	movwf	___lwdiv@dividend+1
+  1244     0779  084F               	movf	main@count,w
+  1245     077A  00F2               	movwf	___lwdiv@dividend
+  1246     077B  120A  118A  2552  120A  118A  	fcall	___lwdiv
+  1247     0780  0870               	movf	?___lwdiv,w
+  1248     0781  00FC               	movwf	write_external_eeprom@data
+  1249     0782  3000               	movlw	0
+  1250     0783  120A  118A  24E4  120A  118A  	fcall	_write_external_eeprom
+  1251     0788  300A               	movlw	10
+  1252     0789  00F7               	movwf	___lwmod@divisor
+  1253     078A  3000               	movlw	0
+  1254     078B  00F8               	movwf	___lwmod@divisor+1
+  1255     078C  3064               	movlw	100
+  1256     078D  00F0               	movwf	___lwdiv@divisor
+  1257     078E  3000               	movlw	0
+  1258     078F  00F1               	movwf	___lwdiv@divisor+1
+  1259     0790  1283               	bcf	3,5	;RP0=0, select bank0
+  1260     0791  1303               	bcf	3,6	;RP1=0, select bank0
+  1261     0792  0850               	movf	main@count+1,w
+  1262     0793  00F3               	movwf	___lwdiv@dividend+1
+  1263     0794  084F               	movf	main@count,w
+  1264     0795  00F2               	movwf	___lwdiv@dividend
+  1265     0796  120A  118A  2552  120A  118A  	fcall	___lwdiv
+  1266     079B  0871               	movf	?___lwdiv+1,w
+  1267     079C  00FA               	movwf	___lwmod@dividend+1
+  1268     079D  0870               	movf	?___lwdiv,w
+  1269     079E  00F9               	movwf	___lwmod@dividend
+  1270     079F  120A  118A  251A  120A  118A  	fcall	___lwmod
+  1271     07A4  0877               	movf	?___lwmod,w
+  1272     07A5  00FC               	movwf	write_external_eeprom@data
+  1273     07A6  3001               	movlw	1
+  1274     07A7  120A  118A  24E4  120A  118A  	fcall	_write_external_eeprom
+  1275     07AC  300A               	movlw	10
+  1276     07AD  00F7               	movwf	___lwmod@divisor
+  1277     07AE  3000               	movlw	0
+  1278     07AF  00F8               	movwf	___lwmod@divisor+1
+  1279     07B0  300A               	movlw	10
+  1280     07B1  00F0               	movwf	___lwdiv@divisor
+  1281     07B2  3000               	movlw	0
+  1282     07B3  00F1               	movwf	___lwdiv@divisor+1
+  1283     07B4  1283               	bcf	3,5	;RP0=0, select bank0
+  1284     07B5  1303               	bcf	3,6	;RP1=0, select bank0
+  1285     07B6  0850               	movf	main@count+1,w
+  1286     07B7  00F3               	movwf	___lwdiv@dividend+1
+  1287     07B8  084F               	movf	main@count,w
+  1288     07B9  00F2               	movwf	___lwdiv@dividend
+  1289     07BA  120A  118A  2552  120A  118A  	fcall	___lwdiv
+  1290     07BF  0871               	movf	?___lwdiv+1,w
+  1291     07C0  00FA               	movwf	___lwmod@dividend+1
+  1292     07C1  0870               	movf	?___lwdiv,w
+  1293     07C2  00F9               	movwf	___lwmod@dividend
+  1294     07C3  120A  118A  251A  120A  118A  	fcall	___lwmod
+  1295     07C8  0877               	movf	?___lwmod,w
+  1296     07C9  00FC               	movwf	write_external_eeprom@data
+  1297     07CA  3002               	movlw	2
+  1298     07CB  120A  118A  24E4  120A  118A  	fcall	_write_external_eeprom
+  1299     07D0  300A               	movlw	10
+  1300     07D1  00F7               	movwf	___lwmod@divisor
+  1301     07D2  3000               	movlw	0
+  1302     07D3  00F8               	movwf	___lwmod@divisor+1
+  1303     07D4  1283               	bcf	3,5	;RP0=0, select bank0
+  1304     07D5  1303               	bcf	3,6	;RP1=0, select bank0
+  1305     07D6  0850               	movf	main@count+1,w
+  1306     07D7  00FA               	movwf	___lwmod@dividend+1
+  1307     07D8  084F               	movf	main@count,w
+  1308     07D9  00F9               	movwf	___lwmod@dividend
+  1309     07DA  120A  118A  251A  120A  118A  	fcall	___lwmod
+  1310     07DF  0877               	movf	?___lwmod,w
+  1311     07E0  00FC               	movwf	write_external_eeprom@data
+  1312     07E1  3003               	movlw	3
+  1313     07E2  120A  118A  24E4  120A  118A  	fcall	_write_external_eeprom
+  1314     07E7  2EA8               	goto	l1181
+  1315     07E8                     l1215:
+  1316     07E8  01CD               	clrf	main@delay
+  1317     07E9  01CE               	clrf	main@delay+1
+  1318     07EA  2EA8               	goto	l1181
+  1319     07EB  120A  118A  2800   	ljmp	start
+  1320     07EE                     __end_of_main:
+  1321                           
+  1322                           	psect	text1
+  1323     04B2                     __ptext1:	
+  1324 ;; *************** function _write_ssd *****************
+  1325 ;; Defined at:
+  1326 ;;		line 14 in file "ssd.c"
+  1327 ;; Parameters:    Size  Location     Type
+  1328 ;;  data            1    0[COMMON] PTR unsigned char 
+  1329 ;;		 -> main@ssd(10), 
+  1330 ;; Auto vars:     Size  Location     Type
+  1331 ;;  delay           2    2[COMMON] unsigned int 
+  1332 ;;  digit           1    4[COMMON] unsigned char 
+  1333 ;; Return value:  Size  Location     Type
+  1334 ;;                  1    wreg      void 
+  1335 ;; Registers used:
+  1336 ;;		wreg, fsr0l, fsr0h, status,2, status,0
+  1337 ;; Tracked objects:
+  1338 ;;		On entry : 0/0
+  1339 ;;		On exit  : 0/0
+  1340 ;;		Unchanged: 0/0
+  1341 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1342 ;;      Params:         1       0       0       0       0
+  1343 ;;      Locals:         3       0       0       0       0
+  1344 ;;      Temps:          1       0       0       0       0
+  1345 ;;      Totals:         5       0       0       0       0
+  1346 ;;Total ram usage:        5 bytes
+  1347 ;; Hardware stack levels used: 1
+  1348 ;; This function calls:
+  1349 ;;		Nothing
+  1350 ;; This function is called by:
+  1351 ;;		_main
+  1352 ;; This function uses a non-reentrant model
+  1353 ;;
+  1354                           
+  1355     04B2                     _write_ssd:	
+  1356                           ;psect for function _write_ssd
+  1357                           
+  1358     04B2                     l1049:	
+  1359                           ;incstack = 0
+  1360                           ; Regs used in _write_ssd: [wreg-fsr0h+status,2+status,0]
+  1361                           
+  1362                           
+  1363                           ;ssd.c: 14:         PORTD = data[digit];;ssd.c: 15:         PORTA = (PORTA & 0x03) | ( 0
+      +                          x04 << digit);;ssd.c: 16: ;ssd.c: 17:         for ( unsigned int delay = 0 ; delay < 500
+      +                           ; delay++);
+  1364     04B2  01F4               	clrf	write_ssd@digit
+  1365     04B3                     l1055:
+  1366                           
+  1367                           ;ssd.c: 18:     };ssd.c: 19: }
+  1368     04B3  0874               	movf	write_ssd@digit,w
+  1369     04B4  0770               	addwf	write_ssd@data,w
+  1370     04B5  00F1               	movwf	??_write_ssd
+  1371     04B6  0871               	movf	??_write_ssd,w
+  1372     04B7  0084               	movwf	4
+  1373     04B8  1383               	bcf	3,7	;select IRP bank0
+  1374     04B9  0800               	movf	0,w
+  1375     04BA  1283               	bcf	3,5	;RP0=0, select bank0
+  1376     04BB  1303               	bcf	3,6	;RP1=0, select bank0
+  1377     04BC  0088               	movwf	8	;volatile
+  1378     04BD                     l1057:
+  1379     04BD  3004               	movlw	4
+  1380     04BE  00F1               	movwf	??_write_ssd
+  1381     04BF  0A74               	incf	write_ssd@digit,w
+  1382     04C0  2CC3               	goto	u634
+  1383     04C1                     u635:
+  1384     04C1  1003               	clrc
+  1385     04C2  0DF1               	rlf	??_write_ssd,f
+  1386     04C3                     u634:
+  1387     04C3  3EFF               	addlw	-1
+  1388     04C4  1D03               	skipz
+  1389     04C5  2CC1               	goto	u635
+  1390     04C6  0805               	movf	5,w	;volatile
+  1391     04C7  3903               	andlw	3
+  1392     04C8  0471               	iorwf	??_write_ssd,w
+  1393     04C9  0085               	movwf	5	;volatile
+  1394     04CA                     l1059:
+  1395     04CA  01F2               	clrf	write_ssd@delay
+  1396     04CB  01F3               	clrf	write_ssd@delay+1
+  1397     04CC                     l1065:
+  1398     04CC  3001               	movlw	1
+  1399     04CD  07F2               	addwf	write_ssd@delay,f
+  1400     04CE  1803               	skipnc
+  1401     04CF  0AF3               	incf	write_ssd@delay+1,f
+  1402     04D0  3000               	movlw	0
+  1403     04D1  07F3               	addwf	write_ssd@delay+1,f
+  1404     04D2  3001               	movlw	1
+  1405     04D3  0273               	subwf	write_ssd@delay+1,w
+  1406     04D4  30F4               	movlw	244
+  1407     04D5  1903               	skipnz
+  1408     04D6  0272               	subwf	write_ssd@delay,w
+  1409     04D7  1C03               	skipc
+  1410     04D8  2CDA               	goto	u641
+  1411     04D9  2CDB               	goto	u640
+  1412     04DA                     u641:
+  1413     04DA  2CCC               	goto	l1065
+  1414     04DB                     u640:
+  1415     04DB                     l1067:
+  1416     04DB  3001               	movlw	1
+  1417     04DC  07F4               	addwf	write_ssd@digit,f
+  1418     04DD                     l1069:
+  1419     04DD  3004               	movlw	4
+  1420     04DE  0274               	subwf	write_ssd@digit,w
+  1421     04DF  1C03               	skipc
+  1422     04E0  2CE2               	goto	u651
+  1423     04E1  2CE3               	goto	u650
+  1424     04E2                     u651:
+  1425     04E2  2CB3               	goto	l1055
+  1426     04E3                     u650:
+  1427     04E3                     l31:
+  1428     04E3  0008               	return
+  1429     04E4                     __end_of_write_ssd:
+  1430                           
+  1431                           	psect	text2
+  1432     04E4                     __ptext2:	
+  1433 ;; *************** function _write_external_eeprom *****************
+  1434 ;; Defined at:
+  1435 ;;		line 8 in file "external_eeprom.c"
+  1436 ;; Parameters:    Size  Location     Type
+  1437 ;;  address         1    wreg     unsigned char 
+  1438 ;;  data            1   12[COMMON] unsigned char 
+  1439 ;; Auto vars:     Size  Location     Type
+  1440 ;;  address         1    2[BANK0 ] unsigned char 
+  1441 ;;  wait            2    0[BANK0 ] unsigned int 
+  1442 ;; Return value:  Size  Location     Type
+  1443 ;;                  1    wreg      void 
+  1444 ;; Registers used:
+  1445 ;;		wreg, status,2, status,0, pclath, cstack
+  1446 ;; Tracked objects:
+  1447 ;;		On entry : 0/0
+  1448 ;;		On exit  : 0/0
+  1449 ;;		Unchanged: 0/0
+  1450 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1451 ;;      Params:         1       0       0       0       0
+  1452 ;;      Locals:         0       3       0       0       0
+  1453 ;;      Temps:          0       0       0       0       0
+  1454 ;;      Totals:         1       3       0       0       0
+  1455 ;;Total ram usage:        4 bytes
+  1456 ;; Hardware stack levels used: 1
+  1457 ;; Hardware stack levels required when called: 1
+  1458 ;; This function calls:
+  1459 ;;		_i2c_start
+  1460 ;;		_i2c_stop
+  1461 ;;		_i2c_write
+  1462 ;; This function is called by:
+  1463 ;;		_main
+  1464 ;; This function uses a non-reentrant model
+  1465 ;;
+  1466                           
+  1467     04E4                     _write_external_eeprom:	
+  1468                           ;psect for function _write_external_eeprom
+  1469                           
+  1470                           
+  1471                           ;incstack = 0
+  1472                           ; Regs used in _write_external_eeprom: [wreg+status,2+status,0+pclath+cstack]
+  1473                           ;write_external_eeprom@address stored from wreg
+  1474     04E4  1283               	bcf	3,5	;RP0=0, select bank0
+  1475     04E5  1303               	bcf	3,6	;RP1=0, select bank0
+  1476     04E6  00A2               	movwf	write_external_eeprom@address
+  1477     04E7                     l1079:
+  1478                           
+  1479                           ;external_eeprom.c: 8: void write_external_eeprom(unsigned char address, unsigned char d
+      +                          ata);external_eeprom.c: 9: {;external_eeprom.c: 10:     i2c_start();
+  1480     04E7  120A  118A  2374  120A  118A  	fcall	_i2c_start
+  1481                           
+  1482                           ;external_eeprom.c: 11:     i2c_write(0xA0);
+  1483     04EC  30A0               	movlw	160
+  1484     04ED  120A  118A  239B  120A  118A  	fcall	_i2c_write
+  1485                           
+  1486                           ;external_eeprom.c: 12:     i2c_write(address);
+  1487     04F2  1283               	bcf	3,5	;RP0=0, select bank0
+  1488     04F3  1303               	bcf	3,6	;RP1=0, select bank0
+  1489     04F4  0822               	movf	write_external_eeprom@address,w
+  1490     04F5  120A  118A  239B  120A  118A  	fcall	_i2c_write
+  1491                           
+  1492                           ;external_eeprom.c: 13:     i2c_write(data);
+  1493     04FA  087C               	movf	write_external_eeprom@data,w
+  1494     04FB  120A  118A  239B  120A  118A  	fcall	_i2c_write
+  1495                           
+  1496                           ;external_eeprom.c: 14:     i2c_stop();
+  1497     0500  120A  118A  237D  120A  118A  	fcall	_i2c_stop
+  1498     0505                     l1081:
+  1499                           
+  1500                           ;external_eeprom.c: 15:     for (unsigned int wait = 3000;wait--;);
+  1501     0505  30B8               	movlw	184
+  1502     0506  1283               	bcf	3,5	;RP0=0, select bank0
+  1503     0507  1303               	bcf	3,6	;RP1=0, select bank0
+  1504     0508  00A0               	movwf	write_external_eeprom@wait
+  1505     0509  300B               	movlw	11
+  1506     050A  00A1               	movwf	write_external_eeprom@wait+1
+  1507     050B                     l1083:
+  1508     050B  3001               	movlw	1
+  1509     050C  02A0               	subwf	write_external_eeprom@wait,f
+  1510     050D  3000               	movlw	0
+  1511     050E  1C03               	skipc
+  1512     050F  03A1               	decf	write_external_eeprom@wait+1,f
+  1513     0510  02A1               	subwf	write_external_eeprom@wait+1,f
+  1514     0511  0A20               	incf	write_external_eeprom@wait,w
+  1515     0512  1D03               	skipz
+  1516     0513  2D18               	goto	u661
+  1517     0514  0A21               	incf	write_external_eeprom@wait+1,w
+  1518     0515  1D03               	btfss	3,2
+  1519     0516  2D18               	goto	u661
+  1520     0517  2D19               	goto	u660
+  1521     0518                     u661:
+  1522     0518  2D0B               	goto	l1083
+  1523     0519                     u660:
+  1524     0519                     l86:
+  1525     0519  0008               	return
+  1526     051A                     __end_of_write_external_eeprom:
+  1527                           
+  1528                           	psect	text3
+  1529     0456                     __ptext3:	
+  1530 ;; *************** function _read_external_eeprom *****************
+  1531 ;; Defined at:
+  1532 ;;		line 18 in file "external_eeprom.c"
+  1533 ;; Parameters:    Size  Location     Type
+  1534 ;;  address         1    wreg     unsigned char 
+  1535 ;; Auto vars:     Size  Location     Type
+  1536 ;;  address         1    1[COMMON] unsigned char 
+  1537 ;;  data            1    2[COMMON] unsigned char 
+  1538 ;; Return value:  Size  Location     Type
+  1539 ;;                  1    wreg      unsigned char 
+  1540 ;; Registers used:
+  1541 ;;		wreg, status,2, status,0, pclath, cstack
+  1542 ;; Tracked objects:
+  1543 ;;		On entry : 0/0
+  1544 ;;		On exit  : 0/0
+  1545 ;;		Unchanged: 0/0
+  1546 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1547 ;;      Params:         0       0       0       0       0
+  1548 ;;      Locals:         2       0       0       0       0
+  1549 ;;      Temps:          0       0       0       0       0
+  1550 ;;      Totals:         2       0       0       0       0
+  1551 ;;Total ram usage:        2 bytes
+  1552 ;; Hardware stack levels used: 1
+  1553 ;; Hardware stack levels required when called: 3
+  1554 ;; This function calls:
+  1555 ;;		_i2c_read
+  1556 ;;		_i2c_rep_start
+  1557 ;;		_i2c_start
+  1558 ;;		_i2c_stop
+  1559 ;;		_i2c_write
+  1560 ;; This function is called by:
+  1561 ;;		_main
+  1562 ;; This function uses a non-reentrant model
+  1563 ;;
+  1564                           
+  1565     0456                     _read_external_eeprom:	
+  1566                           ;psect for function _read_external_eeprom
+  1567                           
+  1568                           
+  1569                           ;incstack = 0
+  1570                           ; Regs used in _read_external_eeprom: [wreg+status,2+status,0+pclath+cstack]
+  1571                           ;read_external_eeprom@address stored from wreg
+  1572     0456  00F1               	movwf	read_external_eeprom@address
+  1573     0457                     l1073:
+  1574                           
+  1575                           ;external_eeprom.c: 18: unsigned char read_external_eeprom(unsigned char address);extern
+      +                          al_eeprom.c: 19: {;external_eeprom.c: 20:     unsigned char data;;external_eeprom.c: 22:
+      +                               i2c_start();
+  1576     0457  120A  118A  2374  120A  118A  	fcall	_i2c_start
+  1577                           
+  1578                           ;external_eeprom.c: 23:     i2c_write(0xA0);
+  1579     045C  30A0               	movlw	160
+  1580     045D  120A  118A  239B  120A  118A  	fcall	_i2c_write
+  1581                           
+  1582                           ;external_eeprom.c: 24:     i2c_write(address);
+  1583     0462  0871               	movf	read_external_eeprom@address,w
+  1584     0463  120A  118A  239B  120A  118A  	fcall	_i2c_write
+  1585                           
+  1586                           ;external_eeprom.c: 25:     i2c_rep_start();
+  1587     0468  120A  118A  2390  120A  118A  	fcall	_i2c_rep_start
+  1588                           
+  1589                           ;external_eeprom.c: 26:     i2c_write(0xA1);
+  1590     046D  30A1               	movlw	161
+  1591     046E  120A  118A  239B  120A  118A  	fcall	_i2c_write
+  1592                           
+  1593                           ;external_eeprom.c: 27:     data = i2c_read();
+  1594     0473  120A  118A  23D7  120A  118A  	fcall	_i2c_read
+  1595     0478  00F2               	movwf	read_external_eeprom@data
+  1596                           
+  1597                           ;external_eeprom.c: 28:     i2c_stop();
+  1598     0479  120A  118A  237D  120A  118A  	fcall	_i2c_stop
+  1599     047E                     l1075:
+  1600                           
+  1601                           ;external_eeprom.c: 30:     return data;
+  1602     047E  0872               	movf	read_external_eeprom@data,w
+  1603     047F                     l89:
+  1604     047F  0008               	return
+  1605     0480                     __end_of_read_external_eeprom:
+  1606                           
+  1607                           	psect	text4
+  1608     039B                     __ptext4:	
+  1609 ;; *************** function _i2c_write *****************
+  1610 ;; Defined at:
+  1611 ;;		line 66 in file "i2c.c"
+  1612 ;; Parameters:    Size  Location     Type
+  1613 ;;  data            1    wreg     unsigned char 
+  1614 ;; Auto vars:     Size  Location     Type
+  1615 ;;  data            1    0[COMMON] unsigned char 
+  1616 ;; Return value:  Size  Location     Type
+  1617 ;;                  2   74[None  ] int 
+  1618 ;; Registers used:
+  1619 ;;		wreg, status,2, status,0, pclath, cstack
+  1620 ;; Tracked objects:
+  1621 ;;		On entry : 0/0
+  1622 ;;		On exit  : 0/0
+  1623 ;;		Unchanged: 0/0
+  1624 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1625 ;;      Params:         0       0       0       0       0
+  1626 ;;      Locals:         1       0       0       0       0
+  1627 ;;      Temps:          0       0       0       0       0
+  1628 ;;      Totals:         1       0       0       0       0
+  1629 ;;Total ram usage:        1 bytes
+  1630 ;; Hardware stack levels used: 1
+  1631 ;; This function calls:
+  1632 ;;		_i2c_wait_for_idle
+  1633 ;; This function is called by:
+  1634 ;;		_write_external_eeprom
+  1635 ;;		_read_external_eeprom
+  1636 ;; This function uses a non-reentrant model
+  1637 ;;
+  1638                           
+  1639     039B                     _i2c_write:	
+  1640                           ;psect for function _i2c_write
+  1641                           
+  1642                           
+  1643                           ;incstack = 0
+  1644                           ; Regs used in _i2c_write: [wreg+status,2+status,0+pclath+cstack]
+  1645                           ;i2c_write@data stored from wreg
+  1646     039B  00F0               	movwf	i2c_write@data
+  1647     039C                     l999:
+  1648                           
+  1649                           ;i2c.c: 66: int i2c_write(unsigned char data);i2c.c: 67: {;i2c.c: 68:     i2c_wait_for_i
+      +                          dle();
+  1650     039C  120A  118A  23A6  120A  118A  	fcall	_i2c_wait_for_idle
+  1651     03A1                     l1001:
+  1652                           
+  1653                           ;i2c.c: 69:     SSPBUF = data;
+  1654     03A1  0870               	movf	i2c_write@data,w
+  1655     03A2  1283               	bcf	3,5	;RP0=0, select bank0
+  1656     03A3  1303               	bcf	3,6	;RP1=0, select bank0
+  1657     03A4  0093               	movwf	19	;volatile
+  1658     03A5                     l1003:
+  1659     03A5                     l137:	
+  1660                           ;i2c.c: 71:     return !ACKSTAT;;	Return value of _i2c_write is never used
+  1661                           
+  1662     03A5  0008               	return
+  1663     03A6                     __end_of_i2c_write:
+  1664                           
+  1665                           	psect	text5
+  1666     0390                     __ptext5:	
+  1667 ;; *************** function _i2c_rep_start *****************
+  1668 ;; Defined at:
+  1669 ;;		line 29 in file "i2c.c"
+  1670 ;; Parameters:    Size  Location     Type
+  1671 ;;		None
+  1672 ;; Auto vars:     Size  Location     Type
+  1673 ;;		None
+  1674 ;; Return value:  Size  Location     Type
+  1675 ;;                  1    wreg      void 
+  1676 ;; Registers used:
+  1677 ;;		wreg, status,2, status,0, pclath, cstack
+  1678 ;; Tracked objects:
+  1679 ;;		On entry : 0/0
+  1680 ;;		On exit  : 0/0
+  1681 ;;		Unchanged: 0/0
+  1682 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1683 ;;      Params:         0       0       0       0       0
+  1684 ;;      Locals:         0       0       0       0       0
+  1685 ;;      Temps:          0       0       0       0       0
+  1686 ;;      Totals:         0       0       0       0       0
+  1687 ;;Total ram usage:        0 bytes
+  1688 ;; Hardware stack levels used: 1
+  1689 ;; Hardware stack levels required when called: 2
+  1690 ;; This function calls:
+  1691 ;;		_i2c_start
+  1692 ;;		_i2c_stop
+  1693 ;; This function is called by:
+  1694 ;;		_read_external_eeprom
+  1695 ;; This function uses a non-reentrant model
+  1696 ;;
+  1697                           
+  1698     0390                     _i2c_rep_start:	
+  1699                           ;psect for function _i2c_rep_start
+  1700                           
+  1701     0390                     l1007:	
+  1702                           ;incstack = 0
+  1703                           ; Regs used in _i2c_rep_start: [wreg+status,2+status,0+pclath+cstack]
+  1704                           
+  1705                           
+  1706                           ;i2c.c: 31:     i2c_stop();
+  1707     0390  120A  118A  237D  120A  118A  	fcall	_i2c_stop
+  1708                           
+  1709                           ;i2c.c: 32:     i2c_start();
+  1710     0395  120A  118A  2374  120A  118A  	fcall	_i2c_start
+  1711     039A                     l128:
+  1712     039A  0008               	return
+  1713     039B                     __end_of_i2c_rep_start:
+  1714                           
+  1715                           	psect	text6
+  1716     037D                     __ptext6:	
+  1717 ;; *************** function _i2c_stop *****************
+  1718 ;; Defined at:
+  1719 ;;		line 36 in file "i2c.c"
+  1720 ;; Parameters:    Size  Location     Type
+  1721 ;;		None
+  1722 ;; Auto vars:     Size  Location     Type
+  1723 ;;		None
+  1724 ;; Return value:  Size  Location     Type
+  1725 ;;                  1    wreg      void 
+  1726 ;; Registers used:
+  1727 ;;		wreg, status,2, status,0, pclath, cstack
+  1728 ;; Tracked objects:
+  1729 ;;		On entry : 0/0
+  1730 ;;		On exit  : 0/0
+  1731 ;;		Unchanged: 0/0
+  1732 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1733 ;;      Params:         0       0       0       0       0
+  1734 ;;      Locals:         0       0       0       0       0
+  1735 ;;      Temps:          0       0       0       0       0
+  1736 ;;      Totals:         0       0       0       0       0
+  1737 ;;Total ram usage:        0 bytes
+  1738 ;; Hardware stack levels used: 1
+  1739 ;; This function calls:
+  1740 ;;		_i2c_wait_for_idle
+  1741 ;; This function is called by:
+  1742 ;;		_write_external_eeprom
+  1743 ;;		_read_external_eeprom
+  1744 ;;		_i2c_rep_start
+  1745 ;; This function uses a non-reentrant model
+  1746 ;;
+  1747                           
+  1748     037D                     _i2c_stop:	
+  1749                           ;psect for function _i2c_stop
+  1750                           
+  1751     037D                     l957:	
+  1752                           ;incstack = 0
+  1753                           ; Regs used in _i2c_stop: [wreg+status,2+status,0+pclath+cstack]
+  1754                           
+  1755                           
+  1756                           ;i2c.c: 38:     i2c_wait_for_idle();
+  1757     037D  120A  118A  23A6  120A  118A  	fcall	_i2c_wait_for_idle
+  1758     0382                     l959:
+  1759                           
+  1760                           ;i2c.c: 39:     PEN = 1;
+  1761     0382  1683               	bsf	3,5	;RP0=1, select bank1
+  1762     0383  1303               	bcf	3,6	;RP1=0, select bank1
+  1763     0384  1511               	bsf	17,2	;volatile
+  1764     0385                     l131:
+  1765     0385  0008               	return
+  1766     0386                     __end_of_i2c_stop:
+  1767                           
+  1768                           	psect	text7
+  1769     0374                     __ptext7:	
+  1770 ;; *************** function _i2c_start *****************
+  1771 ;; Defined at:
+  1772 ;;		line 23 in file "i2c.c"
+  1773 ;; Parameters:    Size  Location     Type
+  1774 ;;		None
+  1775 ;; Auto vars:     Size  Location     Type
+  1776 ;;		None
+  1777 ;; Return value:  Size  Location     Type
+  1778 ;;                  1    wreg      void 
+  1779 ;; Registers used:
+  1780 ;;		wreg, status,2, status,0, pclath, cstack
+  1781 ;; Tracked objects:
+  1782 ;;		On entry : 0/0
+  1783 ;;		On exit  : 0/0
+  1784 ;;		Unchanged: 0/0
+  1785 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1786 ;;      Params:         0       0       0       0       0
+  1787 ;;      Locals:         0       0       0       0       0
+  1788 ;;      Temps:          0       0       0       0       0
+  1789 ;;      Totals:         0       0       0       0       0
+  1790 ;;Total ram usage:        0 bytes
+  1791 ;; Hardware stack levels used: 1
+  1792 ;; This function calls:
+  1793 ;;		_i2c_wait_for_idle
+  1794 ;; This function is called by:
+  1795 ;;		_write_external_eeprom
+  1796 ;;		_read_external_eeprom
+  1797 ;;		_i2c_rep_start
+  1798 ;; This function uses a non-reentrant model
+  1799 ;;
+  1800                           
+  1801     0374                     _i2c_start:	
+  1802                           ;psect for function _i2c_start
+  1803                           
+  1804     0374                     l953:	
+  1805                           ;incstack = 0
+  1806                           ; Regs used in _i2c_start: [wreg+status,2+status,0+pclath+cstack]
+  1807                           
+  1808                           
+  1809                           ;i2c.c: 25:     i2c_wait_for_idle();
+  1810     0374  120A  118A  23A6  120A  118A  	fcall	_i2c_wait_for_idle
+  1811     0379                     l955:
+  1812                           
+  1813                           ;i2c.c: 26:     SEN = 1;
+  1814     0379  1683               	bsf	3,5	;RP0=1, select bank1
+  1815     037A  1303               	bcf	3,6	;RP1=0, select bank1
+  1816     037B  1411               	bsf	17,0	;volatile
+  1817     037C                     l125:
+  1818     037C  0008               	return
+  1819     037D                     __end_of_i2c_start:
+  1820                           
+  1821                           	psect	text8
+  1822     03D7                     __ptext8:	
+  1823 ;; *************** function _i2c_read *****************
+  1824 ;; Defined at:
+  1825 ;;		line 42 in file "i2c.c"
+  1826 ;; Parameters:    Size  Location     Type
+  1827 ;;		None
+  1828 ;; Auto vars:     Size  Location     Type
+  1829 ;;  data            1    0[COMMON] unsigned char 
+  1830 ;; Return value:  Size  Location     Type
+  1831 ;;                  1    wreg      unsigned char 
+  1832 ;; Registers used:
+  1833 ;;		wreg, status,2, status,0, pclath, cstack
+  1834 ;; Tracked objects:
+  1835 ;;		On entry : 0/0
+  1836 ;;		On exit  : 0/0
+  1837 ;;		Unchanged: 0/0
+  1838 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1839 ;;      Params:         0       0       0       0       0
+  1840 ;;      Locals:         1       0       0       0       0
+  1841 ;;      Temps:          0       0       0       0       0
+  1842 ;;      Totals:         1       0       0       0       0
+  1843 ;;Total ram usage:        1 bytes
+  1844 ;; Hardware stack levels used: 1
+  1845 ;; Hardware stack levels required when called: 1
+  1846 ;; This function calls:
+  1847 ;;		_i2c_wait_for_idle
+  1848 ;; This function is called by:
+  1849 ;;		_read_external_eeprom
+  1850 ;; This function uses a non-reentrant model
+  1851 ;;
+  1852                           
+  1853     03D7                     _i2c_read:	
+  1854                           ;psect for function _i2c_read
+  1855                           
+  1856     03D7                     l1009:	
+  1857                           ;incstack = 0
+  1858                           ; Regs used in _i2c_read: [wreg+status,2+status,0+pclath+cstack]
+  1859                           
+  1860                           
+  1861                           ;i2c.c: 44:     unsigned char data;;i2c.c: 46:     i2c_wait_for_idle();
+  1862     03D7  120A  118A  23A6  120A  118A  	fcall	_i2c_wait_for_idle
+  1863     03DC                     l1011:
+  1864                           
+  1865                           ;i2c.c: 47:     RCEN = 1;
+  1866     03DC  1683               	bsf	3,5	;RP0=1, select bank1
+  1867     03DD  1303               	bcf	3,6	;RP1=0, select bank1
+  1868     03DE  1591               	bsf	17,3	;volatile
+  1869                           
+  1870                           ;i2c.c: 49:     i2c_wait_for_idle();
+  1871     03DF  120A  118A  23A6  120A  118A  	fcall	_i2c_wait_for_idle
+  1872     03E4                     l1013:
+  1873                           
+  1874                           ;i2c.c: 50:     data = SSPBUF;
+  1875     03E4  1283               	bcf	3,5	;RP0=0, select bank0
+  1876     03E5  1303               	bcf	3,6	;RP1=0, select bank0
+  1877     03E6  0813               	movf	19,w	;volatile
+  1878     03E7  00F0               	movwf	i2c_read@data
+  1879     03E8                     l1015:
+  1880                           
+  1881                           ;i2c.c: 61:     ACKEN = 1;
+  1882     03E8  1683               	bsf	3,5	;RP0=1, select bank1
+  1883     03E9  1303               	bcf	3,6	;RP1=0, select bank1
+  1884     03EA  1611               	bsf	17,4	;volatile
+  1885     03EB                     l1017:
+  1886                           
+  1887                           ;i2c.c: 63:     return data;
+  1888     03EB  0870               	movf	i2c_read@data,w
+  1889     03EC                     l134:
+  1890     03EC  0008               	return
+  1891     03ED                     __end_of_i2c_read:
+  1892                           
+  1893                           	psect	text9
+  1894     03A6                     __ptext9:	
+  1895 ;; *************** function _i2c_wait_for_idle *****************
+  1896 ;; Defined at:
+  1897 ;;		line 17 in file "i2c.c"
+  1898 ;; Parameters:    Size  Location     Type
+  1899 ;;		None
+  1900 ;; Auto vars:     Size  Location     Type
+  1901 ;;		None
+  1902 ;; Return value:  Size  Location     Type
+  1903 ;;                  1    wreg      void 
+  1904 ;; Registers used:
+  1905 ;;		wreg, status,2
+  1906 ;; Tracked objects:
+  1907 ;;		On entry : 0/0
+  1908 ;;		On exit  : 0/0
+  1909 ;;		Unchanged: 0/0
+  1910 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1911 ;;      Params:         0       0       0       0       0
+  1912 ;;      Locals:         0       0       0       0       0
+  1913 ;;      Temps:          0       0       0       0       0
+  1914 ;;      Totals:         0       0       0       0       0
+  1915 ;;Total ram usage:        0 bytes
+  1916 ;; Hardware stack levels used: 1
+  1917 ;; This function calls:
+  1918 ;;		Nothing
+  1919 ;; This function is called by:
+  1920 ;;		_i2c_start
+  1921 ;;		_i2c_stop
+  1922 ;;		_i2c_read
+  1923 ;;		_i2c_write
+  1924 ;; This function uses a non-reentrant model
+  1925 ;;
+  1926                           
+  1927     03A6                     _i2c_wait_for_idle:	
+  1928                           ;psect for function _i2c_wait_for_idle
+  1929                           
+  1930     03A6                     l949:	
+  1931                           ;incstack = 0
+  1932                           ; Regs used in _i2c_wait_for_idle: [wreg+status,2]
+  1933                           
+  1934     03A6                     l119:	
+  1935                           ;i2c.c: 20:     while (R_nW || (SSPCON2 & 0x1F));
+  1936                           
+  1937     03A6  1683               	bsf	3,5	;RP0=1, select bank1
+  1938     03A7  1303               	bcf	3,6	;RP1=0, select bank1
+  1939     03A8  1914               	btfsc	20,2	;volatile
+  1940     03A9  2BAB               	goto	u481
+  1941     03AA  2BAC               	goto	u480
+  1942     03AB                     u481:
+  1943     03AB  2BA6               	goto	l119
+  1944     03AC                     u480:
+  1945     03AC                     l951:
+  1946     03AC  0811               	movf	17,w	;volatile
+  1947     03AD  391F               	andlw	31
+  1948     03AE  1D03               	btfss	3,2
+  1949     03AF  2BB1               	goto	u491
+  1950     03B0  2BB2               	goto	u490
+  1951     03B1                     u491:
+  1952     03B1  2BA6               	goto	l119
+  1953     03B2                     u490:
+  1954     03B2                     l122:
+  1955     03B2  0008               	return
+  1956     03B3                     __end_of_i2c_wait_for_idle:
+  1957                           
+  1958                           	psect	text10
+  1959     042C                     __ptext10:	
+  1960 ;; *************** function _read_digital_keypad *****************
+  1961 ;; Defined at:
+  1962 ;;		line 11 in file "d_kpd.c"
+  1963 ;; Parameters:    Size  Location     Type
+  1964 ;;  mode            1    wreg     unsigned char 
+  1965 ;; Auto vars:     Size  Location     Type
+  1966 ;;  mode            1    3[COMMON] unsigned char 
+  1967 ;;  once            1    0        unsigned char 
+  1968 ;; Return value:  Size  Location     Type
+  1969 ;;                  1    wreg      unsigned char 
+  1970 ;; Registers used:
+  1971 ;;		wreg, status,2, status,0
+  1972 ;; Tracked objects:
+  1973 ;;		On entry : 0/0
+  1974 ;;		On exit  : 0/0
+  1975 ;;		Unchanged: 0/0
+  1976 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1977 ;;      Params:         0       0       0       0       0
+  1978 ;;      Locals:         1       0       0       0       0
+  1979 ;;      Temps:          3       0       0       0       0
+  1980 ;;      Totals:         4       0       0       0       0
+  1981 ;;Total ram usage:        4 bytes
+  1982 ;; Hardware stack levels used: 1
+  1983 ;; This function calls:
+  1984 ;;		Nothing
+  1985 ;; This function is called by:
+  1986 ;;		_main
+  1987 ;; This function uses a non-reentrant model
+  1988 ;;
+  1989                           
+  1990     042C                     _read_digital_keypad:	
+  1991                           ;psect for function _read_digital_keypad
+  1992                           
+  1993                           
+  1994                           ;incstack = 0
+  1995                           ; Regs used in _read_digital_keypad: [wreg+status,2+status,0]
+  1996                           ;read_digital_keypad@mode stored from wreg
+  1997     042C  00F3               	movwf	read_digital_keypad@mode
+  1998     042D                     l1021:
+  1999     042D                     l1023:
+  2000                           
+  2001                           ;d_kpd.c: 15:         if(((PORTB & 0X03) != 0X03) & once )
+  2002     042D  0873               	movf	read_digital_keypad@mode,w
+  2003     042E  1D03               	btfss	3,2
+  2004     042F  2C31               	goto	u581
+  2005     0430  2C32               	goto	u580
+  2006     0431                     u581:
+  2007     0431  2C37               	goto	l1031
+  2008     0432                     u580:
+  2009     0432                     l1025:
+  2010                           
+  2011                           ;d_kpd.c: 16:         {;d_kpd.c: 17:             once = 0;
+  2012     0432  1283               	bcf	3,5	;RP0=0, select bank0
+  2013     0433  1303               	bcf	3,6	;RP1=0, select bank0
+  2014     0434  0806               	movf	6,w	;volatile
+  2015     0435  3903               	andlw	3
+  2016     0436  2C55               	goto	l9
+  2017     0437                     l1031:
+  2018                           
+  2019                           ;d_kpd.c: 20:         else if ((PORTB & 0X03) == 0X03);d_kpd.c: 21:         {
+  2020     0437  3003               	movlw	3
+  2021     0438  1283               	bcf	3,5	;RP0=0, select bank0
+  2022     0439  1303               	bcf	3,6	;RP1=0, select bank0
+  2023     043A  0506               	andwf	6,w	;volatile
+  2024     043B  00F0               	movwf	??_read_digital_keypad
+  2025     043C  3003               	movlw	3
+  2026     043D  0670               	xorwf	??_read_digital_keypad,w
+  2027     043E  1D03               	btfss	3,2
+  2028     043F  2C41               	goto	u591
+  2029     0440  2C43               	goto	u590
+  2030     0441                     u591:
+  2031     0441  3001               	movlw	1
+  2032     0442  2C44               	goto	u600
+  2033     0443                     u590:
+  2034     0443  3000               	movlw	0
+  2035     0444                     u600:
+  2036     0444  00F1               	movwf	??_read_digital_keypad+1
+  2037     0445  01F2               	clrf	??_read_digital_keypad+2
+  2038     0446  1C71               	btfss	??_read_digital_keypad+1,0
+  2039     0447  2C49               	goto	u611
+  2040     0448  2C4A               	goto	u610
+  2041     0449                     u611:
+  2042     0449  2C4B               	goto	l1041
+  2043     044A                     u610:
+  2044     044A                     l1033:
+  2045     044A  2C32               	goto	l1025
+  2046     044B                     l1041:
+  2047     044B  3003               	movlw	3
+  2048     044C  0506               	andwf	6,w	;volatile
+  2049     044D  00F0               	movwf	??_read_digital_keypad
+  2050     044E  3003               	movlw	3
+  2051     044F  0670               	xorwf	??_read_digital_keypad,w
+  2052     0450  1D03               	btfss	3,2
+  2053     0451  2C53               	goto	u621
+  2054     0452  2C54               	goto	u620
+  2055     0453                     u621:
+  2056     0453  2C54               	goto	l1045
+  2057     0454                     u620:
+  2058     0454                     l1043:
+  2059     0454                     l1045:
+  2060     0454  3003               	movlw	3
+  2061     0455                     l9:
+  2062     0455  0008               	return
+  2063     0456                     __end_of_read_digital_keypad:
+  2064                           
+  2065                           	psect	text11
+  2066     03ED                     __ptext11:	
+  2067 ;; *************** function _init_config *****************
+  2068 ;; Defined at:
+  2069 ;;		line 9 in file "main.c"
+  2070 ;; Parameters:    Size  Location     Type
+  2071 ;;		None
+  2072 ;; Auto vars:     Size  Location     Type
+  2073 ;;		None
+  2074 ;; Return value:  Size  Location     Type
+  2075 ;;                  1    wreg      void 
+  2076 ;; Registers used:
+  2077 ;;		wreg, status,2, status,0, pclath, cstack
+  2078 ;; Tracked objects:
+  2079 ;;		On entry : 0/0
+  2080 ;;		On exit  : 0/0
+  2081 ;;		Unchanged: 0/0
+  2082 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  2083 ;;      Params:         0       0       0       0       0
+  2084 ;;      Locals:         0       0       0       0       0
+  2085 ;;      Temps:          0       0       0       0       0
+  2086 ;;      Totals:         0       0       0       0       0
+  2087 ;;Total ram usage:        0 bytes
+  2088 ;; Hardware stack levels used: 1
+  2089 ;; Hardware stack levels required when called: 2
+  2090 ;; This function calls:
+  2091 ;;		_init_digital_keypad
+  2092 ;;		_init_i2c
+  2093 ;;		_init_ssd
+  2094 ;; This function is called by:
+  2095 ;;		_main
+  2096 ;; This function uses a non-reentrant model
+  2097 ;;
+  2098                           
+  2099     03ED                     _init_config:	
+  2100                           ;psect for function _init_config
+  2101                           
+  2102     03ED                     l1071:	
+  2103                           ;incstack = 0
+  2104                           ; Regs used in _init_config: [wreg+status,2+status,0+pclath+cstack]
+  2105                           
+  2106                           
+  2107                           ;main.c: 10:     unsigned int delay = 0;
+  2108     03ED  120A  118A  23B3  120A  118A  	fcall	_init_ssd
+  2109                           
+  2110                           ;main.c: 11:     unsigned char ssd[10];
+  2111     03F2  120A  118A  236E  120A  118A  	fcall	_init_digital_keypad
+  2112                           
+  2113                           ;main.c: 12:     unsigned char key;
+  2114     03F7  3000               	movlw	0
+  2115     03F8  1283               	bcf	3,5	;RP0=0, select bank0
+  2116     03F9  1303               	bcf	3,6	;RP1=0, select bank0
+  2117     03FA  00A3               	movwf	init_i2c@baud+3
+  2118     03FB  3001               	movlw	1
+  2119     03FC  00A2               	movwf	init_i2c@baud+2
+  2120     03FD  3086               	movlw	134
+  2121     03FE  00A1               	movwf	init_i2c@baud+1
+  2122     03FF  30A0               	movlw	160
+  2123     0400  00A0               	movwf	init_i2c@baud
+  2124     0401  120A  118A  2480  120A  118A  	fcall	_init_i2c
+  2125     0406                     l48:
+  2126     0406  0008               	return
+  2127     0407                     __end_of_init_config:
+  2128                           
+  2129                           	psect	text12
+  2130     03B3                     __ptext12:	
+  2131 ;; *************** function _init_ssd *****************
+  2132 ;; Defined at:
+  2133 ;;		line 5 in file "ssd.c"
+  2134 ;; Parameters:    Size  Location     Type
+  2135 ;;		None
+  2136 ;; Auto vars:     Size  Location     Type
+  2137 ;;		None
+  2138 ;; Return value:  Size  Location     Type
+  2139 ;;                  1    wreg      void 
+  2140 ;; Registers used:
+  2141 ;;		wreg, status,2
+  2142 ;; Tracked objects:
+  2143 ;;		On entry : 0/0
+  2144 ;;		On exit  : 0/0
+  2145 ;;		Unchanged: 0/0
+  2146 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  2147 ;;      Params:         0       0       0       0       0
+  2148 ;;      Locals:         0       0       0       0       0
+  2149 ;;      Temps:          0       0       0       0       0
+  2150 ;;      Totals:         0       0       0       0       0
+  2151 ;;Total ram usage:        0 bytes
+  2152 ;; Hardware stack levels used: 1
+  2153 ;; This function calls:
+  2154 ;;		Nothing
+  2155 ;; This function is called by:
+  2156 ;;		_init_config
+  2157 ;; This function uses a non-reentrant model
+  2158 ;;
+  2159                           
+  2160     03B3                     _init_ssd:	
+  2161                           ;psect for function _init_ssd
+  2162                           
+  2163     03B3                     l987:	
+  2164                           ;incstack = 0
+  2165                           ; Regs used in _init_ssd: [wreg+status,2]
+  2166                           
+  2167                           
+  2168                           ;ssd.c: 7: }
+  2169     03B3  1683               	bsf	3,5	;RP0=1, select bank1
+  2170     03B4  1303               	bcf	3,6	;RP1=0, select bank1
+  2171     03B5  0188               	clrf	8	;volatile
+  2172                           
+  2173                           ;ssd.c: 8: 
+  2174     03B6  1283               	bcf	3,5	;RP0=0, select bank0
+  2175     03B7  1303               	bcf	3,6	;RP1=0, select bank0
+  2176     03B8  0188               	clrf	8	;volatile
+  2177     03B9                     l989:
+  2178                           
+  2179                           ;ssd.c: 10: {
+  2180     03B9  1683               	bsf	3,5	;RP0=1, select bank1
+  2181     03BA  1303               	bcf	3,6	;RP1=0, select bank1
+  2182     03BB  0805               	movf	5,w	;volatile
+  2183     03BC  3903               	andlw	3
+  2184     03BD  0085               	movwf	5	;volatile
+  2185     03BE                     l991:
+  2186                           
+  2187                           ;ssd.c: 11:     unsigned char digit;
+  2188     03BE  1283               	bcf	3,5	;RP0=0, select bank0
+  2189     03BF  1303               	bcf	3,6	;RP1=0, select bank0
+  2190     03C0  0805               	movf	5,w	;volatile
+  2191     03C1  3903               	andlw	3
+  2192     03C2  0085               	movwf	5	;volatile
+  2193     03C3                     l24:
+  2194     03C3  0008               	return
+  2195     03C4                     __end_of_init_ssd:
+  2196                           
+  2197                           	psect	text13
+  2198     0480                     __ptext13:	
+  2199 ;; *************** function _init_i2c *****************
+  2200 ;; Defined at:
+  2201 ;;		line 5 in file "i2c.c"
+  2202 ;; Parameters:    Size  Location     Type
+  2203 ;;  baud            4    0[BANK0 ] unsigned long 
+  2204 ;; Auto vars:     Size  Location     Type
+  2205 ;;		None
+  2206 ;; Return value:  Size  Location     Type
+  2207 ;;                  1    wreg      void 
+  2208 ;; Registers used:
+  2209 ;;		wreg, status,2, status,0, pclath, cstack
+  2210 ;; Tracked objects:
+  2211 ;;		On entry : 0/0
+  2212 ;;		On exit  : 0/0
+  2213 ;;		Unchanged: 0/0
+  2214 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  2215 ;;      Params:         0       4       0       0       0
+  2216 ;;      Locals:         0       0       0       0       0
+  2217 ;;      Temps:          0       4       0       0       0
+  2218 ;;      Totals:         0       8       0       0       0
+  2219 ;;Total ram usage:        8 bytes
+  2220 ;; Hardware stack levels used: 1
+  2221 ;; Hardware stack levels required when called: 1
+  2222 ;; This function calls:
+  2223 ;;		___lldiv
+  2224 ;; This function is called by:
+  2225 ;;		_init_config
+  2226 ;; This function uses a non-reentrant model
+  2227 ;;
+  2228                           
+  2229     0480                     _init_i2c:	
+  2230                           ;psect for function _init_i2c
+  2231                           
+  2232     0480                     l993:	
+  2233                           ;incstack = 0
+  2234                           ; Regs used in _init_i2c: [wreg+status,2+status,0+pclath+cstack]
+  2235                           
+  2236                           
+  2237                           ;i2c.c: 5: void init_i2c(unsigned long baud);i2c.c: 6: {;i2c.c: 8:     SSPM3 = 1;
+  2238     0480  1283               	bcf	3,5	;RP0=0, select bank0
+  2239     0481  1303               	bcf	3,6	;RP1=0, select bank0
+  2240     0482  1594               	bsf	20,3	;volatile
+  2241     0483                     l995:
+  2242                           
+  2243                           ;i2c.c: 11:     SSPADD = (unsigned char)(20000000 / (4 * baud)) - 1;
+  2244     0483  0820               	movf	init_i2c@baud,w
+  2245     0484  00A4               	movwf	??_init_i2c
+  2246     0485  0821               	movf	init_i2c@baud+1,w
+  2247     0486  00A5               	movwf	??_init_i2c+1
+  2248     0487  0822               	movf	init_i2c@baud+2,w
+  2249     0488  00A6               	movwf	??_init_i2c+2
+  2250     0489  0823               	movf	init_i2c@baud+3,w
+  2251     048A  00A7               	movwf	??_init_i2c+3
+  2252     048B  3002               	movlw	2
+  2253     048C                     u575:
+  2254     048C  1003               	clrc
+  2255     048D  0DA4               	rlf	??_init_i2c,f
+  2256     048E  0DA5               	rlf	??_init_i2c+1,f
+  2257     048F  0DA6               	rlf	??_init_i2c+2,f
+  2258     0490  0DA7               	rlf	??_init_i2c+3,f
+  2259     0491                     u570:
+  2260     0491  3EFF               	addlw	-1
+  2261     0492  1D03               	skipz
+  2262     0493  2C8C               	goto	u575
+  2263     0494  0827               	movf	??_init_i2c+3,w
+  2264     0495  00F3               	movwf	___lldiv@divisor+3
+  2265     0496  0826               	movf	??_init_i2c+2,w
+  2266     0497  00F2               	movwf	___lldiv@divisor+2
+  2267     0498  0825               	movf	??_init_i2c+1,w
+  2268     0499  00F1               	movwf	___lldiv@divisor+1
+  2269     049A  0824               	movf	??_init_i2c,w
+  2270     049B  00F0               	movwf	___lldiv@divisor
+  2271     049C  3001               	movlw	1
+  2272     049D  00F7               	movwf	___lldiv@dividend+3
+  2273     049E  3031               	movlw	49
+  2274     049F  00F6               	movwf	___lldiv@dividend+2
+  2275     04A0  302D               	movlw	45
+  2276     04A1  00F5               	movwf	___lldiv@dividend+1
+  2277     04A2  3000               	movlw	0
+  2278     04A3  00F4               	movwf	___lldiv@dividend
+  2279     04A4  120A  118A  2594  120A  118A  	fcall	___lldiv
+  2280     04A9  0870               	movf	?___lldiv,w
+  2281     04AA  3EFF               	addlw	255
+  2282     04AB  1683               	bsf	3,5	;RP0=1, select bank1
+  2283     04AC  1303               	bcf	3,6	;RP1=0, select bank1
+  2284     04AD  0093               	movwf	19	;volatile
+  2285     04AE                     l997:
+  2286                           
+  2287                           ;i2c.c: 14:     SSPEN = 1;
+  2288     04AE  1283               	bcf	3,5	;RP0=0, select bank0
+  2289     04AF  1303               	bcf	3,6	;RP1=0, select bank0
+  2290     04B0  1694               	bsf	20,5	;volatile
+  2291     04B1                     l116:
+  2292     04B1  0008               	return
+  2293     04B2                     __end_of_init_i2c:
+  2294                           
+  2295                           	psect	text14
+  2296     0594                     __ptext14:	
+  2297 ;; *************** function ___lldiv *****************
+  2298 ;; Defined at:
+  2299 ;;		line 5 in file "C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\__lldiv.c"
+  2300 ;; Parameters:    Size  Location     Type
+  2301 ;;  divisor         4    0[COMMON] unsigned long 
+  2302 ;;  dividend        4    4[COMMON] unsigned long 
+  2303 ;; Auto vars:     Size  Location     Type
+  2304 ;;  quotient        4    9[COMMON] unsigned long 
+  2305 ;;  counter         1   13[COMMON] unsigned char 
+  2306 ;; Return value:  Size  Location     Type
+  2307 ;;                  4    0[COMMON] unsigned long 
+  2308 ;; Registers used:
+  2309 ;;		wreg, status,2, status,0
+  2310 ;; Tracked objects:
+  2311 ;;		On entry : 0/0
+  2312 ;;		On exit  : 0/0
+  2313 ;;		Unchanged: 0/0
+  2314 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  2315 ;;      Params:         8       0       0       0       0
+  2316 ;;      Locals:         5       0       0       0       0
+  2317 ;;      Temps:          1       0       0       0       0
+  2318 ;;      Totals:        14       0       0       0       0
+  2319 ;;Total ram usage:       14 bytes
+  2320 ;; Hardware stack levels used: 1
+  2321 ;; This function calls:
+  2322 ;;		Nothing
+  2323 ;; This function is called by:
+  2324 ;;		_init_i2c
+  2325 ;; This function uses a non-reentrant model
+  2326 ;;
+  2327                           
+  2328     0594                     ___lldiv:	
+  2329                           ;psect for function ___lldiv
+  2330                           
+  2331     0594                     l961:	
+  2332                           ;incstack = 0
+  2333                           ; Regs used in ___lldiv: [wreg+status,2+status,0]
+  2334                           
+  2335     0594  3000               	movlw	0
+  2336     0595  00FC               	movwf	___lldiv@quotient+3
+  2337     0596  3000               	movlw	0
+  2338     0597  00FB               	movwf	___lldiv@quotient+2
+  2339     0598  3000               	movlw	0
+  2340     0599  00FA               	movwf	___lldiv@quotient+1
+  2341     059A  3000               	movlw	0
+  2342     059B  00F9               	movwf	___lldiv@quotient
+  2343     059C  0873               	movf	___lldiv@divisor+3,w
+  2344     059D  0472               	iorwf	___lldiv@divisor+2,w
+  2345     059E  0471               	iorwf	___lldiv@divisor+1,w
+  2346     059F  0470               	iorwf	___lldiv@divisor,w
+  2347     05A0  1903               	skipnz
+  2348     05A1  2DA3               	goto	u501
+  2349     05A2  2DA4               	goto	u500
+  2350     05A3                     u501:
+  2351     05A3  2DEF               	goto	l981
+  2352     05A4                     u500:
+  2353     05A4                     l963:
+  2354     05A4  3001               	movlw	1
+  2355     05A5  00FD               	movwf	___lldiv@counter
+  2356     05A6  2DB2               	goto	l967
+  2357     05A7                     l965:
+  2358     05A7  3001               	movlw	1
+  2359     05A8  00F8               	movwf	??___lldiv
+  2360     05A9                     u515:
+  2361     05A9  1003               	clrc
+  2362     05AA  0DF0               	rlf	___lldiv@divisor,f
+  2363     05AB  0DF1               	rlf	___lldiv@divisor+1,f
+  2364     05AC  0DF2               	rlf	___lldiv@divisor+2,f
+  2365     05AD  0DF3               	rlf	___lldiv@divisor+3,f
+  2366     05AE  0BF8               	decfsz	??___lldiv,f
+  2367     05AF  2DA9               	goto	u515
+  2368     05B0  3001               	movlw	1
+  2369     05B1  07FD               	addwf	___lldiv@counter,f
+  2370     05B2                     l967:
+  2371     05B2  1FF3               	btfss	___lldiv@divisor+3,7
+  2372     05B3  2DB5               	goto	u521
+  2373     05B4  2DB6               	goto	u520
+  2374     05B5                     u521:
+  2375     05B5  2DA7               	goto	l965
+  2376     05B6                     u520:
+  2377     05B6                     l969:
+  2378     05B6  3001               	movlw	1
+  2379     05B7  00F8               	movwf	??___lldiv
+  2380     05B8                     u535:
+  2381     05B8  1003               	clrc
+  2382     05B9  0DF9               	rlf	___lldiv@quotient,f
+  2383     05BA  0DFA               	rlf	___lldiv@quotient+1,f
+  2384     05BB  0DFB               	rlf	___lldiv@quotient+2,f
+  2385     05BC  0DFC               	rlf	___lldiv@quotient+3,f
+  2386     05BD  0BF8               	decfsz	??___lldiv,f
+  2387     05BE  2DB8               	goto	u535
+  2388     05BF                     l971:
+  2389     05BF  0873               	movf	___lldiv@divisor+3,w
+  2390     05C0  0277               	subwf	___lldiv@dividend+3,w
+  2391     05C1  1D03               	skipz
+  2392     05C2  2DCD               	goto	u545
+  2393     05C3  0872               	movf	___lldiv@divisor+2,w
+  2394     05C4  0276               	subwf	___lldiv@dividend+2,w
+  2395     05C5  1D03               	skipz
+  2396     05C6  2DCD               	goto	u545
+  2397     05C7  0871               	movf	___lldiv@divisor+1,w
+  2398     05C8  0275               	subwf	___lldiv@dividend+1,w
+  2399     05C9  1D03               	skipz
+  2400     05CA  2DCD               	goto	u545
+  2401     05CB  0870               	movf	___lldiv@divisor,w
+  2402     05CC  0274               	subwf	___lldiv@dividend,w
+  2403     05CD                     u545:
+  2404     05CD  1C03               	skipc
+  2405     05CE  2DD0               	goto	u541
+  2406     05CF  2DD1               	goto	u540
+  2407     05D0                     u541:
+  2408     05D0  2DE0               	goto	l977
+  2409     05D1                     u540:
+  2410     05D1                     l973:
+  2411     05D1  0870               	movf	___lldiv@divisor,w
+  2412     05D2  02F4               	subwf	___lldiv@dividend,f
+  2413     05D3  0871               	movf	___lldiv@divisor+1,w
+  2414     05D4  1C03               	skipc
+  2415     05D5  0F71               	incfsz	___lldiv@divisor+1,w
+  2416     05D6  02F5               	subwf	___lldiv@dividend+1,f
+  2417     05D7  0872               	movf	___lldiv@divisor+2,w
+  2418     05D8  1C03               	skipc
+  2419     05D9  0F72               	incfsz	___lldiv@divisor+2,w
+  2420     05DA  02F6               	subwf	___lldiv@dividend+2,f
+  2421     05DB  0873               	movf	___lldiv@divisor+3,w
+  2422     05DC  1C03               	skipc
+  2423     05DD  0F73               	incfsz	___lldiv@divisor+3,w
+  2424     05DE  02F7               	subwf	___lldiv@dividend+3,f
+  2425     05DF                     l975:
+  2426     05DF  1479               	bsf	___lldiv@quotient,0
+  2427     05E0                     l977:
+  2428     05E0  3001               	movlw	1
+  2429     05E1                     u555:
+  2430     05E1  1003               	clrc
+  2431     05E2  0CF3               	rrf	___lldiv@divisor+3,f
+  2432     05E3  0CF2               	rrf	___lldiv@divisor+2,f
+  2433     05E4  0CF1               	rrf	___lldiv@divisor+1,f
+  2434     05E5  0CF0               	rrf	___lldiv@divisor,f
+  2435     05E6  3EFF               	addlw	-1
+  2436     05E7  1D03               	skipz
+  2437     05E8  2DE1               	goto	u555
+  2438     05E9                     l979:
+  2439     05E9  3001               	movlw	1
+  2440     05EA  02FD               	subwf	___lldiv@counter,f
+  2441     05EB  1D03               	btfss	3,2
+  2442     05EC  2DEE               	goto	u561
+  2443     05ED  2DEF               	goto	u560
+  2444     05EE                     u561:
+  2445     05EE  2DB6               	goto	l969
+  2446     05EF                     u560:
+  2447     05EF                     l981:
+  2448     05EF  087C               	movf	___lldiv@quotient+3,w
+  2449     05F0  00F3               	movwf	?___lldiv+3
+  2450     05F1  087B               	movf	___lldiv@quotient+2,w
+  2451     05F2  00F2               	movwf	?___lldiv+2
+  2452     05F3  087A               	movf	___lldiv@quotient+1,w
+  2453     05F4  00F1               	movwf	?___lldiv+1
+  2454     05F5  0879               	movf	___lldiv@quotient,w
+  2455     05F6  00F0               	movwf	?___lldiv
+  2456     05F7                     l259:
+  2457     05F7  0008               	return
+  2458     05F8                     __end_of___lldiv:
+  2459                           
+  2460                           	psect	text15
+  2461     036E                     __ptext15:	
+  2462 ;; *************** function _init_digital_keypad *****************
+  2463 ;; Defined at:
+  2464 ;;		line 6 in file "d_kpd.c"
+  2465 ;; Parameters:    Size  Location     Type
+  2466 ;;		None
+  2467 ;; Auto vars:     Size  Location     Type
+  2468 ;;		None
+  2469 ;; Return value:  Size  Location     Type
+  2470 ;;                  1    wreg      void 
+  2471 ;; Registers used:
+  2472 ;;		wreg, status,2
+  2473 ;; Tracked objects:
+  2474 ;;		On entry : 0/0
+  2475 ;;		On exit  : 0/0
+  2476 ;;		Unchanged: 0/0
+  2477 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  2478 ;;      Params:         0       0       0       0       0
+  2479 ;;      Locals:         0       0       0       0       0
+  2480 ;;      Temps:          0       0       0       0       0
+  2481 ;;      Totals:         0       0       0       0       0
+  2482 ;;Total ram usage:        0 bytes
+  2483 ;; Hardware stack levels used: 1
+  2484 ;; This function calls:
+  2485 ;;		Nothing
+  2486 ;; This function is called by:
+  2487 ;;		_init_config
+  2488 ;; This function uses a non-reentrant model
+  2489 ;;
+  2490                           
+  2491     036E                     _init_digital_keypad:	
+  2492                           ;psect for function _init_digital_keypad
+  2493                           
+  2494     036E                     l985:	
+  2495                           ;incstack = 0
+  2496                           ; Regs used in _init_digital_keypad: [wreg+status,2]
+  2497                           
+  2498                           
+  2499                           ;d_kpd.c: 8: 
+  2500     036E  1283               	bcf	3,5	;RP0=0, select bank0
+  2501     036F  1303               	bcf	3,6	;RP1=0, select bank0
+  2502     0370  0806               	movf	6,w	;volatile
+  2503     0371  3803               	iorlw	3
+  2504     0372  0086               	movwf	6	;volatile
+  2505     0373                     l5:
+  2506     0373  0008               	return
+  2507     0374                     __end_of_init_digital_keypad:
+  2508                           
+  2509                           	psect	text16
+  2510     0407                     __ptext16:	
+  2511 ;; *************** function ___wmul *****************
+  2512 ;; Defined at:
+  2513 ;;		line 15 in file "C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\Umul16.c"
+  2514 ;; Parameters:    Size  Location     Type
+  2515 ;;  multiplier      2    0[COMMON] unsigned int 
+  2516 ;;  multiplicand    2    2[COMMON] unsigned int 
+  2517 ;; Auto vars:     Size  Location     Type
+  2518 ;;  product         2    4[COMMON] unsigned int 
+  2519 ;; Return value:  Size  Location     Type
+  2520 ;;                  2    0[COMMON] unsigned int 
+  2521 ;; Registers used:
+  2522 ;;		wreg, status,2, status,0
+  2523 ;; Tracked objects:
+  2524 ;;		On entry : 0/0
+  2525 ;;		On exit  : 0/0
+  2526 ;;		Unchanged: 0/0
+  2527 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  2528 ;;      Params:         4       0       0       0       0
+  2529 ;;      Locals:         2       0       0       0       0
+  2530 ;;      Temps:          0       0       0       0       0
+  2531 ;;      Totals:         6       0       0       0       0
+  2532 ;;Total ram usage:        6 bytes
+  2533 ;; Hardware stack levels used: 1
+  2534 ;; This function calls:
+  2535 ;;		Nothing
+  2536 ;; This function is called by:
+  2537 ;;		_main
+  2538 ;; This function uses a non-reentrant model
+  2539 ;;
+  2540                           
+  2541     0407                     ___wmul:	
+  2542                           ;psect for function ___wmul
+  2543                           
+  2544     0407                     l1085:	
+  2545                           ;incstack = 0
+  2546                           ; Regs used in ___wmul: [wreg+status,2+status,0]
+  2547                           
+  2548     0407  01F4               	clrf	___wmul@product
+  2549     0408  01F5               	clrf	___wmul@product+1
+  2550     0409                     l1087:
+  2551     0409  1C70               	btfss	___wmul@multiplier,0
+  2552     040A  2C0C               	goto	u671
+  2553     040B  2C0D               	goto	u670
+  2554     040C                     u671:
+  2555     040C  2C13               	goto	l223
+  2556     040D                     u670:
+  2557     040D                     l1089:
+  2558     040D  0872               	movf	___wmul@multiplicand,w
+  2559     040E  07F4               	addwf	___wmul@product,f
+  2560     040F  1803               	skipnc
+  2561     0410  0AF5               	incf	___wmul@product+1,f
+  2562     0411  0873               	movf	___wmul@multiplicand+1,w
+  2563     0412  07F5               	addwf	___wmul@product+1,f
+  2564     0413                     l223:
+  2565     0413  3001               	movlw	1
+  2566     0414                     u685:
+  2567     0414  1003               	clrc
+  2568     0415  0DF2               	rlf	___wmul@multiplicand,f
+  2569     0416  0DF3               	rlf	___wmul@multiplicand+1,f
+  2570     0417  3EFF               	addlw	-1
+  2571     0418  1D03               	skipz
+  2572     0419  2C14               	goto	u685
+  2573     041A                     l1091:
+  2574     041A  3001               	movlw	1
+  2575     041B                     u695:
+  2576     041B  1003               	clrc
+  2577     041C  0CF1               	rrf	___wmul@multiplier+1,f
+  2578     041D  0CF0               	rrf	___wmul@multiplier,f
+  2579     041E  3EFF               	addlw	-1
+  2580     041F  1D03               	skipz
+  2581     0420  2C1B               	goto	u695
+  2582     0421                     l1093:
+  2583     0421  0870               	movf	___wmul@multiplier,w
+  2584     0422  0471               	iorwf	___wmul@multiplier+1,w
+  2585     0423  1D03               	btfss	3,2
+  2586     0424  2C26               	goto	u701
+  2587     0425  2C27               	goto	u700
+  2588     0426                     u701:
+  2589     0426  2C09               	goto	l1087
+  2590     0427                     u700:
+  2591     0427                     l1095:
+  2592     0427  0875               	movf	___wmul@product+1,w
+  2593     0428  00F1               	movwf	?___wmul+1
+  2594     0429  0874               	movf	___wmul@product,w
+  2595     042A  00F0               	movwf	?___wmul
+  2596     042B                     l225:
+  2597     042B  0008               	return
+  2598     042C                     __end_of___wmul:
+  2599                           
+  2600                           	psect	text17
+  2601     051A                     __ptext17:	
+  2602 ;; *************** function ___lwmod *****************
+  2603 ;; Defined at:
+  2604 ;;		line 5 in file "C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\lwmod.c"
+  2605 ;; Parameters:    Size  Location     Type
+  2606 ;;  divisor         2    7[COMMON] unsigned int 
+  2607 ;;  dividend        2    9[COMMON] unsigned int 
+  2608 ;; Auto vars:     Size  Location     Type
+  2609 ;;  counter         1   11[COMMON] unsigned char 
+  2610 ;; Return value:  Size  Location     Type
+  2611 ;;                  2    7[COMMON] unsigned int 
+  2612 ;; Registers used:
+  2613 ;;		wreg, status,2, status,0
+  2614 ;; Tracked objects:
+  2615 ;;		On entry : 0/0
+  2616 ;;		On exit  : 0/0
+  2617 ;;		Unchanged: 0/0
+  2618 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  2619 ;;      Params:         4       0       0       0       0
+  2620 ;;      Locals:         1       0       0       0       0
+  2621 ;;      Temps:          0       0       0       0       0
+  2622 ;;      Totals:         5       0       0       0       0
+  2623 ;;Total ram usage:        5 bytes
+  2624 ;; Hardware stack levels used: 1
+  2625 ;; This function calls:
+  2626 ;;		Nothing
+  2627 ;; This function is called by:
+  2628 ;;		_main
+  2629 ;; This function uses a non-reentrant model
+  2630 ;;
+  2631                           
+  2632     051A                     ___lwmod:	
+  2633                           ;psect for function ___lwmod
+  2634                           
+  2635     051A                     l1125:	
+  2636                           ;incstack = 0
+  2637                           ; Regs used in ___lwmod: [wreg+status,2+status,0]
+  2638                           
+  2639     051A  0877               	movf	___lwmod@divisor,w
+  2640     051B  0478               	iorwf	___lwmod@divisor+1,w
+  2641     051C  1903               	btfsc	3,2
+  2642     051D  2D1F               	goto	u781
+  2643     051E  2D20               	goto	u780
+  2644     051F                     u781:
+  2645     051F  2D4D               	goto	l1143
+  2646     0520                     u780:
+  2647     0520                     l1127:
+  2648     0520  3001               	movlw	1
+  2649     0521  00FB               	movwf	___lwmod@counter
+  2650     0522  2D2C               	goto	l1133
+  2651     0523                     l1129:
+  2652     0523  3001               	movlw	1
+  2653     0524                     u795:
+  2654     0524  1003               	clrc
+  2655     0525  0DF7               	rlf	___lwmod@divisor,f
+  2656     0526  0DF8               	rlf	___lwmod@divisor+1,f
+  2657     0527  3EFF               	addlw	-1
+  2658     0528  1D03               	skipz
+  2659     0529  2D24               	goto	u795
+  2660     052A                     l1131:
+  2661     052A  3001               	movlw	1
+  2662     052B  07FB               	addwf	___lwmod@counter,f
+  2663     052C                     l1133:
+  2664     052C  1FF8               	btfss	___lwmod@divisor+1,7
+  2665     052D  2D2F               	goto	u801
+  2666     052E  2D30               	goto	u800
+  2667     052F                     u801:
+  2668     052F  2D23               	goto	l1129
+  2669     0530                     u800:
+  2670     0530                     l1135:
+  2671     0530  0878               	movf	___lwmod@divisor+1,w
+  2672     0531  027A               	subwf	___lwmod@dividend+1,w
+  2673     0532  1D03               	skipz
+  2674     0533  2D36               	goto	u815
+  2675     0534  0877               	movf	___lwmod@divisor,w
+  2676     0535  0279               	subwf	___lwmod@dividend,w
+  2677     0536                     u815:
+  2678     0536  1C03               	skipc
+  2679     0537  2D39               	goto	u811
+  2680     0538  2D3A               	goto	u810
+  2681     0539                     u811:
+  2682     0539  2D40               	goto	l1139
+  2683     053A                     u810:
+  2684     053A                     l1137:
+  2685     053A  0877               	movf	___lwmod@divisor,w
+  2686     053B  02F9               	subwf	___lwmod@dividend,f
+  2687     053C  0878               	movf	___lwmod@divisor+1,w
+  2688     053D  1C03               	skipc
+  2689     053E  03FA               	decf	___lwmod@dividend+1,f
+  2690     053F  02FA               	subwf	___lwmod@dividend+1,f
+  2691     0540                     l1139:
+  2692     0540  3001               	movlw	1
+  2693     0541                     u825:
+  2694     0541  1003               	clrc
+  2695     0542  0CF8               	rrf	___lwmod@divisor+1,f
+  2696     0543  0CF7               	rrf	___lwmod@divisor,f
+  2697     0544  3EFF               	addlw	-1
+  2698     0545  1D03               	skipz
+  2699     0546  2D41               	goto	u825
+  2700     0547                     l1141:
+  2701     0547  3001               	movlw	1
+  2702     0548  02FB               	subwf	___lwmod@counter,f
+  2703     0549  1D03               	btfss	3,2
+  2704     054A  2D4C               	goto	u831
+  2705     054B  2D4D               	goto	u830
+  2706     054C                     u831:
+  2707     054C  2D30               	goto	l1135
+  2708     054D                     u830:
+  2709     054D                     l1143:
+  2710     054D  087A               	movf	___lwmod@dividend+1,w
+  2711     054E  00F8               	movwf	?___lwmod+1
+  2712     054F  0879               	movf	___lwmod@dividend,w
+  2713     0550  00F7               	movwf	?___lwmod
+  2714     0551                     l513:
+  2715     0551  0008               	return
+  2716     0552                     __end_of___lwmod:
+  2717                           
+  2718                           	psect	text18
+  2719     0552                     __ptext18:	
+  2720 ;; *************** function ___lwdiv *****************
+  2721 ;; Defined at:
+  2722 ;;		line 5 in file "C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\lwdiv.c"
+  2723 ;; Parameters:    Size  Location     Type
+  2724 ;;  divisor         2    0[COMMON] unsigned int 
+  2725 ;;  dividend        2    2[COMMON] unsigned int 
+  2726 ;; Auto vars:     Size  Location     Type
+  2727 ;;  quotient        2    4[COMMON] unsigned int 
+  2728 ;;  counter         1    6[COMMON] unsigned char 
+  2729 ;; Return value:  Size  Location     Type
+  2730 ;;                  2    0[COMMON] unsigned int 
+  2731 ;; Registers used:
+  2732 ;;		wreg, status,2, status,0
+  2733 ;; Tracked objects:
+  2734 ;;		On entry : 0/0
+  2735 ;;		On exit  : 0/0
+  2736 ;;		Unchanged: 0/0
+  2737 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  2738 ;;      Params:         4       0       0       0       0
+  2739 ;;      Locals:         3       0       0       0       0
+  2740 ;;      Temps:          0       0       0       0       0
+  2741 ;;      Totals:         7       0       0       0       0
+  2742 ;;Total ram usage:        7 bytes
+  2743 ;; Hardware stack levels used: 1
+  2744 ;; This function calls:
+  2745 ;;		Nothing
+  2746 ;; This function is called by:
+  2747 ;;		_main
+  2748 ;; This function uses a non-reentrant model
+  2749 ;;
+  2750                           
+  2751     0552                     ___lwdiv:	
+  2752                           ;psect for function ___lwdiv
+  2753                           
+  2754     0552                     l1099:	
+  2755                           ;incstack = 0
+  2756                           ; Regs used in ___lwdiv: [wreg+status,2+status,0]
+  2757                           
+  2758     0552  01F4               	clrf	___lwdiv@quotient
+  2759     0553  01F5               	clrf	___lwdiv@quotient+1
+  2760     0554                     l1101:
+  2761     0554  0870               	movf	___lwdiv@divisor,w
+  2762     0555  0471               	iorwf	___lwdiv@divisor+1,w
+  2763     0556  1903               	btfsc	3,2
+  2764     0557  2D59               	goto	u711
+  2765     0558  2D5A               	goto	u710
+  2766     0559                     u711:
+  2767     0559  2D8F               	goto	l1121
+  2768     055A                     u710:
+  2769     055A                     l1103:
+  2770     055A  3001               	movlw	1
+  2771     055B  00F6               	movwf	___lwdiv@counter
+  2772     055C  2D66               	goto	l1109
+  2773     055D                     l1105:
+  2774     055D  3001               	movlw	1
+  2775     055E                     u725:
+  2776     055E  1003               	clrc
+  2777     055F  0DF0               	rlf	___lwdiv@divisor,f
+  2778     0560  0DF1               	rlf	___lwdiv@divisor+1,f
+  2779     0561  3EFF               	addlw	-1
+  2780     0562  1D03               	skipz
+  2781     0563  2D5E               	goto	u725
+  2782     0564                     l1107:
+  2783     0564  3001               	movlw	1
+  2784     0565  07F6               	addwf	___lwdiv@counter,f
+  2785     0566                     l1109:
+  2786     0566  1FF1               	btfss	___lwdiv@divisor+1,7
+  2787     0567  2D69               	goto	u731
+  2788     0568  2D6A               	goto	u730
+  2789     0569                     u731:
+  2790     0569  2D5D               	goto	l1105
+  2791     056A                     u730:
+  2792     056A                     l1111:
+  2793     056A  3001               	movlw	1
+  2794     056B                     u745:
+  2795     056B  1003               	clrc
+  2796     056C  0DF4               	rlf	___lwdiv@quotient,f
+  2797     056D  0DF5               	rlf	___lwdiv@quotient+1,f
+  2798     056E  3EFF               	addlw	-1
+  2799     056F  1D03               	skipz
+  2800     0570  2D6B               	goto	u745
+  2801     0571  0871               	movf	___lwdiv@divisor+1,w
+  2802     0572  0273               	subwf	___lwdiv@dividend+1,w
+  2803     0573  1D03               	skipz
+  2804     0574  2D77               	goto	u755
+  2805     0575  0870               	movf	___lwdiv@divisor,w
+  2806     0576  0272               	subwf	___lwdiv@dividend,w
+  2807     0577                     u755:
+  2808     0577  1C03               	skipc
+  2809     0578  2D7A               	goto	u751
+  2810     0579  2D7B               	goto	u750
+  2811     057A                     u751:
+  2812     057A  2D82               	goto	l1117
+  2813     057B                     u750:
+  2814     057B                     l1113:
+  2815     057B  0870               	movf	___lwdiv@divisor,w
+  2816     057C  02F2               	subwf	___lwdiv@dividend,f
+  2817     057D  0871               	movf	___lwdiv@divisor+1,w
+  2818     057E  1C03               	skipc
+  2819     057F  03F3               	decf	___lwdiv@dividend+1,f
+  2820     0580  02F3               	subwf	___lwdiv@dividend+1,f
+  2821     0581                     l1115:
+  2822     0581  1474               	bsf	___lwdiv@quotient,0
+  2823     0582                     l1117:
+  2824     0582  3001               	movlw	1
+  2825     0583                     u765:
+  2826     0583  1003               	clrc
+  2827     0584  0CF1               	rrf	___lwdiv@divisor+1,f
+  2828     0585  0CF0               	rrf	___lwdiv@divisor,f
+  2829     0586  3EFF               	addlw	-1
+  2830     0587  1D03               	skipz
+  2831     0588  2D83               	goto	u765
+  2832     0589                     l1119:
+  2833     0589  3001               	movlw	1
+  2834     058A  02F6               	subwf	___lwdiv@counter,f
+  2835     058B  1D03               	btfss	3,2
+  2836     058C  2D8E               	goto	u771
+  2837     058D  2D8F               	goto	u770
+  2838     058E                     u771:
+  2839     058E  2D6A               	goto	l1111
+  2840     058F                     u770:
+  2841     058F                     l1121:
+  2842     058F  0875               	movf	___lwdiv@quotient+1,w
+  2843     0590  00F1               	movwf	?___lwdiv+1
+  2844     0591  0874               	movf	___lwdiv@quotient,w
+  2845     0592  00F0               	movwf	?___lwdiv
+  2846     0593                     l503:
+  2847     0593  0008               	return
+  2848     0594                     __end_of___lwdiv:
+  2849     0002                     ___latbits      equ	2
+  2850     007E                     btemp           set	126	;btemp
+  2851     007E                     btemp0          set	126
+  2852     007F                     btemp1          set	127
+  2853     007E                     wtemp0          set	126
+  2854     007F                     wtemp0a         set	127
+  2855     007F                     ttemp0a         set	127
+  2856     0080                     ltemp0a         set	128
+  2857                           
+  2858                           	psect	config
+  2859                           
+  2860                           ;Config register CONFIG @ 0x2007
+  2861                           ;	Oscillator Selection bits
+  2862                           ;	FOSC = 0x3, unprogrammed default
+  2863                           ;	Watchdog Timer Enable bit
+  2864                           ;	WDTE = OFF, WDT disabled
+  2865                           ;	Power-up Timer Enable bit
+  2866                           ;	PWRTE = 0x1, unprogrammed default
+  2867                           ;	Brown-out Reset Enable bit
+  2868                           ;	BOREN = 0x1, unprogrammed default
+  2869                           ;	Low-Voltage (Single-Supply) In-Circuit Serial Programming Enable bit
+  2870                           ;	LVP = 0x1, unprogrammed default
+  2871                           ;	Data EEPROM Memory Code Protection bit
+  2872                           ;	CPD = 0x1, unprogrammed default
+  2873                           ;	Flash Program Memory Write Enable bits
+  2874                           ;	WRT = 0x3, unprogrammed default
+  2875                           ;	In-Circuit Debugger Mode bit
+  2876                           ;	DEBUG = 0x1, unprogrammed default
+  2877                           ;	Flash Program Memory Code Protection bit
+  2878                           ;	CP = 0x1, unprogrammed default
+  2879     2007                     	org	8199
+  2880     2007  3FFB               	dw	16379
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        10
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14     14      14
+    BANK0            80     49      59
+    BANK1            80      0       0
+    BANK3            96      0       0
+    BANK2            96      0       0
+
+Pointer List with Targets:
+
+    write_ssd@data	PTR unsigned char  size(1) Largest target is 10
+		 -> main@ssd(BANK0[10]), 
+
+
+Critical Paths under _main in COMMON
+
+    _write_external_eeprom->___lwmod
+    _read_external_eeprom->_i2c_read
+    _read_external_eeprom->_i2c_write
+    _init_i2c->___lldiv
+    ___lwmod->___lwdiv
+
+Critical Paths under _main in BANK0
+
+    _init_config->_init_i2c
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                41    41      0    1747
+                                              8 BANK0     41    41      0
+                            ___lwdiv
+                            ___lwmod
+                             ___wmul
+                        _init_config
+                _read_digital_keypad
+               _read_external_eeprom
+              _write_external_eeprom
+                          _write_ssd
+ ---------------------------------------------------------------------------------
+ (1) _write_ssd                                            5     4      1     159
+                                              0 COMMON     5     4      1
+ ---------------------------------------------------------------------------------
+ (1) _write_external_eeprom                                4     3      1     107
+                                             12 COMMON     1     0      1
+                                              0 BANK0      3     3      0
+                            ___lwdiv (ARG)
+                            ___lwmod (ARG)
+                          _i2c_start
+                           _i2c_stop
+                          _i2c_write
+ ---------------------------------------------------------------------------------
+ (1) _read_external_eeprom                                 2     2      0     104
+                                              1 COMMON     2     2      0
+                           _i2c_read
+                      _i2c_rep_start
+                          _i2c_start
+                           _i2c_stop
+                          _i2c_write
+ ---------------------------------------------------------------------------------
+ (2) _i2c_write                                            1     1      0      29
+                                              0 COMMON     1     1      0
+                  _i2c_wait_for_idle
+ ---------------------------------------------------------------------------------
+ (2) _i2c_rep_start                                        0     0      0       0
+                          _i2c_start
+                           _i2c_stop
+ ---------------------------------------------------------------------------------
+ (3) _i2c_stop                                             0     0      0       0
+                  _i2c_wait_for_idle
+ ---------------------------------------------------------------------------------
+ (3) _i2c_start                                            0     0      0       0
+                  _i2c_wait_for_idle
+ ---------------------------------------------------------------------------------
+ (2) _i2c_read                                             1     1      0      23
+                                              0 COMMON     1     1      0
+                  _i2c_wait_for_idle
+ ---------------------------------------------------------------------------------
+ (4) _i2c_wait_for_idle                                    0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _read_digital_keypad                                  5     5      0      54
+                                              0 COMMON     4     4      0
+ ---------------------------------------------------------------------------------
+ (1) _init_config                                          0     0      0     187
+                _init_digital_keypad
+                           _init_i2c
+                           _init_ssd
+ ---------------------------------------------------------------------------------
+ (2) _init_ssd                                             0     0      0       0
+ ---------------------------------------------------------------------------------
+ (2) _init_i2c                                             8     4      4     187
+                                              0 BANK0      8     4      4
+                            ___lldiv
+ ---------------------------------------------------------------------------------
+ (3) ___lldiv                                             14     6      8     164
+                                              0 COMMON    14     6      8
+ ---------------------------------------------------------------------------------
+ (2) _init_digital_keypad                                  0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) ___wmul                                               6     2      4      98
+                                              0 COMMON     6     2      4
+ ---------------------------------------------------------------------------------
+ (1) ___lwmod                                              5     1      4     173
+                                              7 COMMON     5     1      4
+                            ___lwdiv (ARG)
+ ---------------------------------------------------------------------------------
+ (1) ___lwdiv                                              7     3      4     174
+                                              0 COMMON     7     3      4
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 4
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   ___lwdiv
+   ___lwmod
+     ___lwdiv (ARG)
+   ___wmul
+   _init_config
+     _init_digital_keypad
+     _init_i2c
+       ___lldiv
+     _init_ssd
+   _read_digital_keypad
+   _read_external_eeprom
+     _i2c_read
+       _i2c_wait_for_idle
+     _i2c_rep_start
+       _i2c_start
+         _i2c_wait_for_idle
+       _i2c_stop
+         _i2c_wait_for_idle
+     _i2c_start
+     _i2c_stop
+     _i2c_write
+       _i2c_wait_for_idle
+   _write_external_eeprom
+     ___lwdiv (ARG)
+     ___lwmod (ARG)
+     _i2c_start (ARG)
+     _i2c_stop (ARG)
+     _i2c_write (ARG)
+   _write_ssd
+
+Address spaces:
+Name               Size   Autos  Total    Usage
+BANK3               96      0       0      0.0%
+BITBANK3            96      0       0      0.0%
+BANK2               96      0       0      0.0%
+BITBANK2            96      0       0      0.0%
+BANK1               80      0       0      0.0%
+BITBANK1            80      0       0      0.0%
+BANK0               80     49      59     73.8%
+BITBANK0            80      0       0      0.0%
+COMMON              14     14      14    100.0%
+BITCOMMON           14      0       0      0.0%
+DATA                 0      0      73      0.0%
+STACK                0      0       0      0.0%
+
+
+Microchip Technology PIC Macro Assembler V3.10 build 20250813170317 
+Symbol Table                                                                                   Fri Nov 13 16:34:03 2026
+
+                            l5 0373                              l9 0455                              pc 0002  
+        _write_external_eeprom 04E4                             l31 04E3                             l24 03C3  
+                           l48 0406                             l86 0519                             l89 047F  
+                           fsr 0004            ___wmul@multiplicand 0072                            l122 03B2  
+                          l131 0385                            l116 04B1                            l125 037C  
+                          l134 03EC                            l223 0413                            l119 03A6  
+                          l128 039A                            l225 042B                            l137 03A5  
+                          l503 0593                            l513 0551                            l259 05F7  
+                          l951 03AC                            l961 0594                            l953 0374  
+                          l971 05BF                            l963 05A4                            l955 0379  
+                          l973 05D1                            l965 05A7                            l981 05EF  
+                          l949 03A6                            l957 037D                            l975 05DF  
+                          l967 05B2                            l991 03BE                            l959 0382  
+                          l985 036E                            l977 05E0                            l969 05B6  
+                          l993 0480                            l979 05E9                            l995 0483  
+                          l987 03B3                            l997 04AE                            l989 03B9  
+                          l999 039C                            u500 05A4                            u501 05A3  
+                          u520 05B6                            u600 0444                            _PEN 048A  
+                          u521 05B5                            u610 044A                            u515 05A9  
+                          u611 0449                            u700 0427                            u540 05D1  
+                          u620 0454                            u701 0426                            u541 05D0  
+                          u621 0453                            u710 055A                            u711 0559  
+                          u535 05B8                            u800 0530                            u560 05EF  
+                          u480 03AC                            u640 04DB                            u801 052F  
+                          u561 05EE                            u545 05CD                            u481 03AB  
+                          u641 04DA                            u730 056A                            u810 053A  
+                          u570 0491                            u490 03B2                            u650 04E3  
+                          u634 04C3                            u731 0569                            u811 0539  
+                          u555 05E1                            u491 03B1                            u651 04E2  
+                          u635 04C1                            u580 0432                            u660 0519  
+                          u900 074A                            _SEN 0488                            u725 055E  
+                          u581 0431                            u661 0518                            u901 0749  
+                          u750 057B                            u830 054D                            u670 040D  
+                          u590 0443                            u910 0753                            u751 057A  
+                          u831 054C                            u815 0536                            u671 040C  
+                          u575 048C                            u591 0441                            u911 0752  
+                          u920 075C                            u840 0607                            u745 056B  
+                          u825 0541                            u921 075B                            u770 058F  
+                          u930 076D                            u850 0640                            u771 058E  
+                          u755 0577                            u931 076C                            u851 063F  
+                          u780 0520                            u940 0773                            u860 0647  
+                          u765 0583                            u781 051F                            u685 0414  
+                          u941 0772                            u861 0646                            u870 064E  
+                          u695 041B                            u871 064D                            u880 0655  
+                          u881 0654                            u890 073B                            u795 0524  
+                          u891 073A                            fsr0 0004                            indf 0000  
+                         l1001 03A1                           l1011 03DC                           l1003 03A5  
+                         l1101 0554                           l1021 042D                           l1013 03E4  
+                         l1111 056A                           l1103 055A                           l1031 0437  
+                         l1023 042D                           l1015 03E8                           l1007 0390  
+                         l1113 057B                           l1105 055D                           l1121 058F  
+                         l1033 044A                           l1041 044B                           l1025 0432  
+                         l1017 03EB                           l1009 03D7                           l1201 0753  
+                         l1115 0581                           l1107 0564                           l1131 052A  
+                         l1043 0454                           l1203 075C                           l1211 076E  
+                         l1117 0582                           l1109 0566                           l1141 0547  
+                         l1133 052C                           l1125 051A                           l1045 0454  
+                         l1213 0773                           l1205 0762                           l1119 0589  
+                         l1135 0530                           l1127 0520                           l1143 054D  
+                         l1071 03ED                           l1055 04B3                           l1215 07E8  
+                         l1207 0764                           l1151 05FD                           l1137 053A  
+                         l1129 0523                           l1073 0457                           l1081 0505  
+                         l1065 04CC                           l1057 04BD                           l1049 04B2  
+                         l1161 0631                           l1153 0601                           l1139 0540  
+                         l1091 041A                           l1075 047E                           l1083 050B  
+                         l1067 04DB                           l1059 04CA                           l1171 0648  
+                         l1163 063A                           l1155 0616                           l1147 05F8  
+                         l1093 0421                           l1085 0407                           l1069 04DD  
+                         l1181 06A8                           l1173 064E                           l1165 0640  
+                         l1157 061F                           l1149 05FD                           l1095 0427  
+                         l1087 0409                           l1079 04E7                           l1191 072C  
+                         l1183 06CC                           l1175 064F                           l1167 0641  
+                         l1159 0628                           l1089 040D                           l1193 0735  
+                         l1185 06EE                           l1177 0655                           l1169 0647  
+        ??_read_digital_keypad 0070                           l1099 0552                           l1195 073B  
+                         l1187 0710                           l1179 0656                           l1197 074A  
+                         l1189 0725                           l1199 074D          ?_read_external_eeprom 0070  
+                         _RCEN 048B                           _R_nW 04A2                           _main 05F8  
+                         btemp 007E                           start 0000                  write_ssd@data 0070  
+                _i2c_rep_start 0390                          ?_main 0070                          _ACKEN 048C  
+              __end_of___lldiv 05F8                __end_of___lwdiv 0594                __end_of___lwmod 0552  
+                 ?_init_config 0070                          _PORTA 0005                          _PORTB 0006  
+                        _PORTD 0008                          _SSPM3 00A3                          _TRISA 0085  
+                        _TRISD 0088                          _SSPEN 00A5      write_external_eeprom@data 007C  
+    write_external_eeprom@wait 0020                          btemp0 007E                          btemp1 007F  
+                        pclath 000A                          status 0003                          wtemp0 007E  
+              __initialization 07EE                 ?_i2c_rep_start 0070         ?_write_external_eeprom 007C  
+                 __end_of_main 07EE                 write_ssd@delay 0072                 write_ssd@digit 0074  
+             __end_of_i2c_read 03ED               __end_of_i2c_stop 0386                         ??_main 0028  
+       ??_read_external_eeprom 0071                   i2c_read@data 0070                         _SSPADD 0093  
+                       _SSPBUF 0013    __end_of_init_digital_keypad 0374                         ___wmul 0407  
+                    ??___lldiv 0078                      ??___lwdiv 0074                      ??___lwmod 007B  
+             __end_of_init_i2c 04B2               __end_of_init_ssd 03C4                         ltemp0a 0080  
+                       ttemp0a 007F                         wtemp0a 007F        __end_of__initialization 07FC  
+              ??_i2c_rep_start 0070                 __pcstackCOMMON 0070                   __pidataBANK0 0386  
+            __end_of_i2c_start 037D              __end_of_i2c_write 03A6              _i2c_wait_for_idle 03A6  
+           ?_i2c_wait_for_idle 0070                      ?_i2c_read 0070                      ?_i2c_stop 0070  
+          ??_i2c_wait_for_idle 0070   write_external_eeprom@address 0022                     __pmaintext 05F8  
+                      ?___wmul 0070                        _ACKSTAT 048E    __end_of_read_digital_keypad 0456  
+    __end_of_i2c_wait_for_idle 03B3                   init_i2c@baud 0020                        _SSPCON2 0091  
+                   ??_i2c_read 0070                     ??_i2c_stop 0070                      ?_init_i2c 0020  
+                    ?_init_ssd 0070        ??_write_external_eeprom 007D                        ___lldiv 0594  
+                      ___lwdiv 0552                        ___lwmod 051A                        __ptext1 04B2  
+                      __ptext2 04E4                        __ptext3 0456                        __ptext4 039B  
+                      __ptext5 0390                        __ptext6 037D                        __ptext7 0374  
+                      __ptext8 03D7                        __ptext9 03A6                        main@key 0048  
+                      main@ssd 003E           end_of_initialization 07FC                     ??_init_i2c 0024  
+                   ??_init_ssd 0070                ___lldiv@divisor 0070                ___lldiv@counter 007D  
+            __end_of_write_ssd 04E4                  i2c_write@data 0070                     main@digits 0034  
+     read_external_eeprom@data 0072                     main@fourth 004C                     main@second 004A  
+               __end_of___wmul 042C            start_initialization 07EE                      _i2c_start 0374  
+                    _i2c_write 039B          __end_of_i2c_rep_start 039B                       ??___wmul 0074  
+                   init_fetch0 03C4                    __pdataBANK0 0051                  ??_init_config 007E  
+                    ___latbits 0002                  __pcstackBANK0 0020                     ?_i2c_start 0070  
+                   ?_i2c_write 0070               ___lwdiv@dividend 0072  __end_of_write_external_eeprom 051A  
+                     ?___lldiv 0070                       ?___lwdiv 0070                       ?___lwmod 0077  
+             ___lwdiv@quotient 0074            __end_of_init_config 0407                 ___wmul@product 0074  
+  read_external_eeprom@address 0071                      main@F1031 0051              ___wmul@multiplier 0070  
+                    main@delay 004D                      main@first 0049                      main@count 004F  
+                    main@third 004B                    ??_i2c_start 0070                    ??_i2c_write 0070  
+                    _write_ssd 04B2            _init_digital_keypad 036E                       _i2c_read 03D7  
+                     _i2c_stop 037D   __end_of_read_external_eeprom 0480           ?_init_digital_keypad 0070  
+                  _init_config 03ED                ___lwdiv@divisor 0070                ___lwdiv@counter 0076  
+                     __ptext10 042C                       __ptext11 03ED                       __ptext12 03B3  
+                     __ptext13 0480                       __ptext14 0594                       __ptext15 036E  
+                     __ptext16 0407                       __ptext17 051A                       __ptext18 0552  
+                   ?_write_ssd 0070                       _init_i2c 0480                       _init_ssd 03B3  
+      read_digital_keypad@mode 0073          ??_init_digital_keypad 0070                       init_ram0 03C8  
+             ___lwmod@dividend 0079               ___lldiv@dividend 0074            _read_digital_keypad 042C  
+             ___lldiv@quotient 0079                ___lwmod@divisor 0077                ___lwmod@counter 007B  
+                  ??_write_ssd 0071           ?_read_digital_keypad 0070           _read_external_eeprom 0456  

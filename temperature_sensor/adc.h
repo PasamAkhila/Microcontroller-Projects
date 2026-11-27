@@ -1,0 +1,9 @@
+#ifndef ADC_H
+#define	ADC_H
+
+#define CHANNEL2        0x02 
+void init_adc(void);
+unsigned short read_adc(unsigned char channel);
+
+#endif
+
